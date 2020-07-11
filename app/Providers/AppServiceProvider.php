@@ -1,18 +1,18 @@
-<?php
-
-namespace App\Providers;
+<?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Events\Dispatcher;
+use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
+use Illuminate\Support\Facades\Auth;
 
-class AppServiceProvider extends ServiceProvider
-{
+class AppServiceProvider extends ServiceProvider {
+
     /**
      * Register any application services.
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         //
     }
 
@@ -21,8 +21,80 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot(Dispatcher $events) {
+        $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
+                $hak_akses=Auth::user()->hak_akses;
+                $event->menu->add('Hak Akses: '.strtoupper($hak_akses));
+
+                switch ($hak_akses) {
+                    case 'administrator':
+                        $event->menu->add(
+                            ['header' => 'MENU SURAT'],
+                            [
+                            'text' => 'Surat',
+                            'url' => 'surat',
+                            'icon' => 'fas fa-fw fa-file'
+                            ],
+                            [
+                            'text' => 'Expedisi',
+                            'url' => 'expedisi',
+                            'icon' => 'fas fa-fw fa-paper-plane'
+                            ],
+                            ['header' => 'MENU USER'],
+                            [
+                            'text' => 'Profile',
+                            'url' => 'profile',
+                            'icon' => 'fas fa-fw fa-user-tie'
+                            ],
+                            [
+                            'text' => 'User',
+                            'url' => 'user',
+                            'icon' => 'fas fa-fw fa-users'
+                            ],
+                            [
+                                'text' => 'Jabatan',
+                                'url' => 'jabatan',
+                                'icon' => 'fas fa-fw fa-briefcase'
+                            ]
+                        );
+                        break;
+
+                    case 'petugas':
+                        $event->menu->add(
+                            ['header' => 'MENU SURAT'],
+                            [
+                            'text' => 'Surat',
+                            'url' => 'surat',
+                            'icon' => 'fas fa-fw fa-file'
+                            ],
+                            [
+                            'text' => 'Expedisi',
+                            'url' => 'expedisi',
+                            'icon' => 'fas fa-fw fa-paper-plane'
+                            ],
+                            ['header' => 'MENU USER'],
+                            [
+                            'text' => 'Profile',
+                            'url' => 'profile',
+                            'icon' => 'fas fa-fw fa-user-tie'
+                            ]
+                            );
+                        break;
+                    default:
+                    $event->menu->add(
+                        [
+                            'text' => 'Profile',
+                            'url' => 'profile',
+                            'icon' => 'fas fa-fw fa-user-tie'
+                            ]
+                        );
+                        break;
+                }
+            }
+
+        );
+
+
         //
     }
 }

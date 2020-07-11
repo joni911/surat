@@ -16,3 +16,31 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group([ 'middleware' => 'auth' ], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('surat', 'suratControll');
+    Route::resource('expedisi', 'SppControll');
+    Route::resource('profile', 'profileControll');
+    Route::resource('user', 'userControll');
+    Route::resource('jabatan', 'jabatanControll');
+    Route::get('/history', 'PembayaranController@history');
+    Route::get('/laporan', function () {
+    return view('laporan');
+    });
+    route::get('/laporan/kelas', 'LaporanController@kelas');
+    route::get('/laporan/spp', 'LaporanController@spp');
+    route::get('/laporan/siswa', 'LaporanController@siswa');
+    route::get('/laporan/petugas', 'LaporanController@petugas');
+    route::get('/laporan/pembayaran', 'LaporanController@pembayaran');
+});
