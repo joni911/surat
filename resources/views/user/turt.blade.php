@@ -1,26 +1,27 @@
 @extends('adminlte::page')
-@section('title', 'jabatan')
+@section('title', 'Petugas')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Jabatan</h1>
+<h1 class="m-0 text-dark">Manajemen Petugas</h1>
 @stop
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <p class="text-center">
-                    Tambahkan jabatan kepada user
-                </p>
-
+                <a class="btn btn-primary btn-md" href="{{ route('petugas.create') }}">
+                    <i class="fa fa-plus"></i> Tambah
+                </a>
+                <a class="btn btn-primary btn-md" href="{{ route('petugas.turt') }}">
+                    <i class="fa fa-plus"></i> Staff Turt
+                </a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th style="width: 20px">No</th>
+                            <th style="width: 20px">#</th>
                             <th>Nama</th>
-                            <th>Hak Akses</th>
-                            <th>Jabatan</th>
+                            <th>Email</th>
                             <th style="width: 80px">Aksi</th>
                         </tr>
                     </thead>
@@ -35,20 +36,16 @@
                                 {{ $item->name }}
                             </td>
                             <td>
-                                {{ $item->hak_akses }}
-                            </td>
-                            <td>
-                                {{ $item->jabatan->jabatan }}
+                                {{ $item->email }}
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-primary"
-                                        href="{{ route('jabatan.create', ['jabatan'=>$item->id]) }}">
-                                        <i class="fas fa-plus"></i>
-                                    </a>
                                     <a class="btn btn-success"
-                                        href="{{ route('jabatan.edit', ['jabatan'=>$item->id]) }}">
+                                        href="{{ route('petugas.edit', ['petuga'=>$item->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
+                                        <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                             </td>
@@ -56,7 +53,7 @@
                         <?php $no++;?>
                         @empty
                         <tr>
-                            <td colspan="5">
+                            <td colspan="4">29
                                 Tidak ada data.
                             </td>
                         </tr>

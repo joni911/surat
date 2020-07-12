@@ -7,10 +7,10 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <p class="text-center">
-                    Tambahkan jabatan kepada user
-                </p>
+           <div class="card-header">
+                <a class="btn btn-primary btn-md" href="{{ route('user.create') }}">
+                    <i class="fa fa-plus"></i> Tambah
+                </a>
 
             </div>
             <div class="card-body">
@@ -20,7 +20,7 @@
                             <th style="width: 20px">No</th>
                             <th>Nama</th>
                             <th>Hak Akses</th>
-                            <th>Jabatan</th>
+                            <th>Email</th>
                             <th style="width: 80px">Aksi</th>
                         </tr>
                     </thead>
@@ -38,17 +38,16 @@
                                 {{ $item->hak_akses }}
                             </td>
                             <td>
-                                {{ $item->jabatan->jabatan }}
+                                {{ $item->email }}
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-primary"
-                                        href="{{ route('jabatan.create', ['jabatan'=>$item->id]) }}">
-                                        <i class="fas fa-plus"></i>
-                                    </a>
                                     <a class="btn btn-success"
                                         href="{{ route('jabatan.edit', ['jabatan'=>$item->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
+                                        <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                             </td>

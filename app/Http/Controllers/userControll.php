@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class userControll extends Controller
 {
@@ -13,7 +15,9 @@ class userControll extends Controller
      */
     public function index()
     {
-        //
+        $data = User::paginate(10);
+        $tampil['data']=$data;
+        return view('user.index',$tampil);
     }
 
     /**
@@ -23,7 +27,7 @@ class userControll extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -34,7 +38,23 @@ class userControll extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+        ]);
+
+        //enkripsi password
+        $enkripsi = Hash::make('admin');
+        $request->merge(['password' => $enkripsi]);
+
+        //isi hak_akses dengan 'petugas'
+
+        $request->merge(['hak_akses' => $request->hak_akses]);
+        $dataUser = User::create($request->all());
+        return redirect()->route("user.index")->with(
+            "success",
+            "Data berhasil disimpan."
+        );
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class profileControll extends Controller
 {
@@ -73,7 +74,24 @@ class profileControll extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed'
+            ]);
+            $data = User::findOrFail($id);
+            $data->name = $request->name;
+            $data->email = $request->email;
+            //$data->hak_akses = $request->hak_akses;
+            //jika password tidak kosong
+            if ($request->password!="") {
+            $enkripsi = Hash::make($request->password);
+            $data->password = $enkripsi;
+            }
+            $data->save();
+            Auth::logout();
+            return redirect()->route("login");
+
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('adminlte::page')
-@section('title', 'Profile')
+@section('title', 'Petugas')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Profile</h1>
+<h1 class="m-0 text-dark">Manajemen Petugas</h1>
 @stop
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
         @if ($errors->any())
         <div class="alert alert-warning alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="icon fa fa-warning"></i> Perhatian!</h4>
+            <h4><i class="icon fa fa-warning"></i> Perhatian!</h4>33
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -19,12 +19,12 @@
         @endif
         <div class="card">
             <div class="card-header">
-                Tambah Petugas
+                Ubah Petugas
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('profile.update', ['profile' => $id]) }}" method="post">
+                <form class="form-horizontal" action="{{ route('petugas.update', ['petuga' => $id]) }}" method="post">
                     @method('PUT')
-                    @include('profile.form')
+                    @include('petugas.form')
                 </form>
             </div>
         </div>
@@ -32,3 +32,9 @@
 </div>
 @stop
 @section('plugins.Pace', true)
+@section('js')
+<script type="text/javascript">
+    $("#nisn").prop('disabled', true);
+
+</script>
+@stop

@@ -24,9 +24,8 @@
       </div>
   </div>
 <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-2 col-sm-10 text-center">
         <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">
-        <a href="/reset/{{ $id }}" class="btn btn-primary" role="button">Reset Password</a>
     </div>
 </div>
 

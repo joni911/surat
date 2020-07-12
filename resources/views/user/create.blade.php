@@ -1,7 +1,7 @@
 @extends('adminlte::page')
-@section('title', 'Profile')
+@section('title', 'User')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Profile</h1>
+<h1 class="m-0 text-dark">Manajemen User</h1>
 @stop
 @section('content')
 <div class="row">
@@ -22,9 +22,8 @@
                 Tambah Petugas
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('profile.update', ['profile' => $id]) }}" method="post">
-                    @method('PUT')
-                    @include('profile.form')
+                <form class="form-horizontal" action="{{ route('user.store') }}" method="post">
+                    @include('user.form')
                 </form>
             </div>
         </div>
