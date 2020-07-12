@@ -30,7 +30,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('surat', 'suratControll');
-    Route::resource('expedisi', 'SppControll');
+    Route::resource('masuk', 'masukControll');
+    Route::resource('expedisi', 'expedisiControll');
     Route::resource('profile', 'profileControll');
     Route::resource('user', 'userControll');
     Route::resource('jabatan', 'jabatanControll');

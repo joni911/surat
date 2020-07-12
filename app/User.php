@@ -24,6 +24,10 @@ class User extends Authenticatable
         return $this->hasOne('App\jabatan');
     }
 
+    public function surat()
+    {
+        return $this->hasMany('App\surat');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

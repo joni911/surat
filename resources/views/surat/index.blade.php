@@ -19,8 +19,10 @@
                         <tr>
                             <th style="width: 20px">No</th>
                             <th>No Surat</th>
-                            <th>Judul</th>
+                            <th>Tanggal</th>
+                            <th>Prihal</th>
                             <th>Keterangan </th>
+                            <th>Tujuan</th>
                             <th>File</th>
                             <th style="width: 80px">Aksi</th>
                         </tr>
@@ -36,16 +38,19 @@
                                 {{ $item->no_surat }}
                             </td>
                             <td>
-                                {{ $item->judul }}
+                                {{$item->tanggal_surat}}
+                            </td>
+                            <td>
+                                {{ $item->prihal }}
                             </td>
                             <td>
                                 {{ $item->keterangan }}
                             </td>
                             <td>
-                                {{ $item->file }}
+                                {{ $item->tujuan}}
                             </td>
                             <td>
-                                {{ $item->tanggal }}
+                                {{ $item->file }}
                             </td>
                             <td>
                                 <div class="btn-group">
@@ -58,6 +63,7 @@
                                     </a>
                                 </div>
                             </td>
+
                         </tr>
                         <?php $no++;?>
                         @empty

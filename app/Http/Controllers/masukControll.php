@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\jabatan;
-use Illuminate\Http\Request;
 use App\surat;
-use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class suratControll extends Controller
+class masukControll extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +17,7 @@ class suratControll extends Controller
     {
         $data = Auth::user();
         //echo $data->jabatan->jabatan;
-       $tampil['data'] = surat::where('jabatan_id',$data->jabatan->id)->paginate(10);
+        $tampil['data'] = surat::where('tujuan',$data->jabatan->jabatan)->paginate(10);
         return view('surat.index',$tampil);
     }
 
@@ -30,8 +28,7 @@ class suratControll extends Controller
      */
     public function create()
     {
-        $data = Auth::user();
-       return view('surat.create',['data' => $data]);
+        //
     }
 
     /**
@@ -42,39 +39,7 @@ class suratControll extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'no_surat' => 'required',
-            'file' => 'required',
-            'tujuan' => 'required',
-            'prihal' => 'required',
-            'keterangan'=> 'required',
-            'tanggal_masuk' => 'required'
-            ]);
-            //isi id_user dengan id user yang login
-            $nama = Auth::user();
-
-            //$nama_file =  Storage::disk('s3')->url($path);
-
-            $file = $request->file('file');
-
-            $nama_file = $request->no_surat."-".$request->prihal.".".$file->extension();
-
-            $tujuan_upload = 'surat_storage';
-            $file->move($tujuan_upload,$nama_file);
-            surat::create([
-                'user_id' => $nama->id,
-                'jabatan_id' => $nama->jabatan->id,
-                'no_surat' => $request->no_surat,
-                'tanggal_surat' => $request->tanggal_masuk,
-                'prihal' => $request->prihal,
-                'tujuan' => $request->tujuan,
-                'file' => $nama_file,
-                'keterangan' => $request->keterangan,
-            ]);
-            return redirect()->route("surat.index")->with(
-            "success",
-            "Data berhasil disimpan."
-            );
+        //
     }
 
     /**

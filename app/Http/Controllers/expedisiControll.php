@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\surat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class expedisiControll extends Controller
 {
@@ -13,7 +15,10 @@ class expedisiControll extends Controller
      */
     public function index()
     {
-        //
+        $data = Auth::user();
+        //echo $data->jabatan->jabatan;
+        $tampil['data'] = surat::where('tujuan',$data->jabatan->jabatan)->paginate(10);
+        return view('surat.index',$tampil);
     }
 
     /**

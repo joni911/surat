@@ -23,10 +23,10 @@ class AppServiceProvider extends ServiceProvider {
      */
     public function boot(Dispatcher $events) {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-                $hak_akses=Auth::user()->hak_akses;
-                $event->menu->add('Hak Akses: '.strtoupper($hak_akses));
-
-                switch ($hak_akses) {
+                $hak_akses=Auth::user();
+                // $event->menu->add('Hak Akses: '.strtoupper($hak_akses->hak_akses));
+                $event->menu->add('Jabatan: '.strtoupper($hak_akses->jabatan->jabatan));
+                switch ($hak_akses->hak_akses) {
                     case 'administrator':
                         $event->menu->add(
                             ['header' => 'MENU SURAT'],
@@ -67,6 +67,11 @@ class AppServiceProvider extends ServiceProvider {
                             'url' => 'surat',
                             'icon' => 'fas fa-fw fa-file'
                             ],
+                            [
+                                'text' => 'Surat Masuk',
+                                'url' => 'masuk',
+                                'icon' => 'fas fa-fw fa-inbox'
+                                ],
                             [
                             'text' => 'Expedisi',
                             'url' => 'expedisi',

@@ -15,12 +15,11 @@ class CreateSuratsTable extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_user');
-            $table->string('id_jabatan');
+            $table->bigInteger('user_id');
+            $table->string('jabatan_id');
             $table->string('no_surat');
             $table->string('keterangan');
             $table->string('file');
-            $table->time('jam');
             $table->date('tanggal');
             $table->timestamps();
         });
