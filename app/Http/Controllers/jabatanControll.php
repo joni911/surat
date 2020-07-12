@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\jabatan;
 use App\surat;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Echo_;
 
 class jabatanControll extends Controller
 {
@@ -16,7 +18,7 @@ class jabatanControll extends Controller
      */
     public function index()
     {
-        $data = User::paginate(10);
+        $data = jabatan::paginate(10);
         $tampil['data'] =$data;
         return view('jabatan.index',$tampil);
     }
@@ -28,7 +30,9 @@ class jabatanControll extends Controller
      */
     public function create()
     {
-        //
+        $data = User::get();
+        $tampil['data']=$data;
+        return view('jabatan.create',$tampil);
     }
 
     /**
@@ -39,7 +43,11 @@ class jabatanControll extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataUser = jabatan::create($request->all());
+        return redirect()->route("jabatan.index")->with(
+            "success",
+            "Data berhasil disimpan."
+        );
     }
 
     /**
@@ -61,7 +69,9 @@ class jabatanControll extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = jabatan::findOrFail($id);
+        
+        return view('jabatan.edit',$data);
     }
 
     /**
@@ -73,7 +83,14 @@ class jabatanControll extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            $data = jabatan::findOrFail($id);
+            $data->jabatan = $request->jabatan;
+
+            $data->save();
+            return redirect()->route("jabatan.index")->with(
+            "success",
+            "Data User berhasil diubah."
+            );
     }
 
     /**

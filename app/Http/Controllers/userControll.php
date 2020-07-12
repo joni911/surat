@@ -76,7 +76,9 @@ class userControll extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = User::findOrFail($id);
+
+        return view('user.edit',$data);
     }
 
     /**
@@ -88,7 +90,20 @@ class userControll extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            ]);
+            $data = User::findOrFail($id);
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->hak_akses = $request->hak_akses;
+            //jika password tidak kosong
+            $data->save();
+            return redirect()->route("user.index")->with(
+            "success",
+            "Data User berhasil diubah."
+            );
     }
 
     /**
@@ -99,6 +114,7 @@ class userControll extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = User::findOrFail($id);
+        $data->delete();
     }
 }

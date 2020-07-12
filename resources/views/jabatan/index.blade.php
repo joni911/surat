@@ -8,10 +8,12 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <p class="text-center">
-                    Tambahkan jabatan kepada user
-                </p>
+                <div class="card-header">
+                <a class="btn btn-primary btn-md" href="{{ route('jabatan.create') }}">
+                    <i class="fa fa-plus"></i> Tambah Jabatan User
+                </a>
 
+            </div>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -32,23 +34,22 @@
                                 {{ $no }}
                             </td>
                             <td>
-                                {{ $item->name }}
+                                {{ $item->user->name }}
                             </td>
                             <td>
-                                {{ $item->hak_akses }}
+                                {{ $item->user->hak_akses }}
                             </td>
                             <td>
-                                {{ $item->jabatan->jabatan }}
+                                {{ $item->jabatan }}
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-primary"
-                                        href="{{ route('jabatan.create', ['jabatan'=>$item->id]) }}">
-                                        <i class="fas fa-plus"></i>
-                                    </a>
                                     <a class="btn btn-success"
                                         href="{{ route('jabatan.edit', ['jabatan'=>$item->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
+                                        <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                             </td>
@@ -94,13 +95,13 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#dd3333',
-            30
             confirmButtonText: 'Hapus',
             cancelButtonText: 'Batal',
         }).then((result) => {
             if (result.value) {
+                39
                 $.ajax({
-                    url: "/petugas/" + id,
+                    url: "/user/" + id,
                     type: 'DELETE',
                     data: {
                         '_token': $('meta[name=csrf-token]').attr("content"),

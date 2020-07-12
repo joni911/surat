@@ -43,7 +43,7 @@
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-success"
-                                        href="{{ route('jabatan.edit', ['jabatan'=>$item->id]) }}">
+                                        href="{{ route('user.edit', ['user'=>$item->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
@@ -93,13 +93,13 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#dd3333',
-            30
             confirmButtonText: 'Hapus',
             cancelButtonText: 'Batal',
         }).then((result) => {
             if (result.value) {
+                39
                 $.ajax({
-                    url: "/petugas/" + id,
+                    url: "/user/" + id,
                     type: 'DELETE',
                     data: {
                         '_token': $('meta[name=csrf-token]').attr("content"),

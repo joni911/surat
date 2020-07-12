@@ -1,7 +1,7 @@
 @extends('adminlte::page')
-@section('title', 'Petugas')
+@section('title', 'Jabtan')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Petugas</h1>
+<h1 class="m-0 text-dark">Manajemen Jabatan</h1>
 @stop
 @section('content')
 <div class="row">
@@ -22,8 +22,8 @@
                 Tambah Petugas
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('petugas.store') }}" method="post">
-                    @include('petugas.form')
+                <form class="form-horizontal" action="{{ route('jabatan.store') }}" method="post">
+                    @include('jabatan.form')
                 </form>
             </div>
         </div>

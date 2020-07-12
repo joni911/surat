@@ -12,17 +12,14 @@
     </div>
 </div>
 <div class="form-group">
-  <label for="">Password</label>
+    <label for="">Akses</label>
     <div class="col-sm-10">
-        <input type="password" class="form-control" name="password" id="" placeholder="">
+        <select class="form-control" name="hak_akses" id="">
+            <option value="user">User</option>
+            <option value="administrator">Admin</option>
+          </select>
     </div>
 </div>
-<div class="form-group">
-    <label for="">Konfirmasi</label>
-      <div class="col-sm-10">
-          <input type="password" class="form-control" name="password_confirmation" id="" placeholder="">
-      </div>
-  </div>
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10 text-center">
         <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">

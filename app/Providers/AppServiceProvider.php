@@ -59,7 +59,7 @@ class AppServiceProvider extends ServiceProvider {
                         );
                         break;
 
-                    case 'petugas':
+                    case 'user':
                         $event->menu->add(
                             ['header' => 'MENU SURAT'],
                             [

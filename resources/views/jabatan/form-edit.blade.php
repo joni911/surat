@@ -1,21 +1,17 @@
 {{ csrf_field() }}
 <div class="form-group">
-  <label for="">User</label>
+  <label for="">User ID</label>
   <div class="col-sm-10">
-  <select class="form-control" name="user_id" id="">
-
-    @foreach ($data as $item)
-        <option value="{{ $item->id}}">{{ $item->name }}</option>
-
-    @endforeach
-  </select>
+  <input type="text"
+    class="form-control" name="user_id" id="" aria-describedby="helpId" placeholder="" value="{{$user_id}}" disabled>
 </div>
 </div>
+
 <div class="form-group">
   <label for="">Jabatan</label>
     <div class="col-sm-10">
         <select class="form-control" name="jabatan" id="">
-            <option >Turt</option>
+            <option value="turt" >Turt</option>
             <option >IT</option>
             <option >Kasubag Umum </option>
             <option >Kasubag Oprasional</option>
