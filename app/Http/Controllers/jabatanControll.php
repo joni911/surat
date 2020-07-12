@@ -43,6 +43,10 @@ class jabatanControll extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'jabatan' => 'required',
+            'user_id' => 'unique:jabatans',
+        ]);
         $dataUser = jabatan::create($request->all());
         return redirect()->route("jabatan.index")->with(
             "success",
@@ -70,7 +74,7 @@ class jabatanControll extends Controller
     public function edit($id)
     {
         $data = jabatan::findOrFail($id);
-        
+
         return view('jabatan.edit',$data);
     }
 
