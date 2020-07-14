@@ -1,3 +1,18 @@
+## About This Project
+Project aplikasi surat dengan kemampuan mengirim surat dan mencatat proses perjalanan surat
+
+## Installation
+```bash
+git clone https://github.com/joni911/surat.git
+
+cd surat
+
+composser install
+
+php artisan migrate
+
+php atisan serve
+```
 
 ## About Laravel
 
