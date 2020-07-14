@@ -1,17 +1,28 @@
 @extends('adminlte::page')
-@section('title', 'Surat')
+@section('title', 'Disposisi')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Petugas</h1>
+<h1 class="m-0 text-dark">Manajemen Disposisi</h1>
 @stop
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary btn-md" href="{{ route('surat.create') }}">
-                    <i class="fa fa-plus"></i> Tambah
-                </a>
-
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <input type="text"
+                                  class="form-control" name="" id="" aria-describedby="helpId" placeholder="Cari no surat">
+                              </div>
+                        </div>
+                      <div class="row">
+                        <div class="col-sm-1-12">
+                            <button type="submit" class="btn btn-primary">Cari</button>
+                           </div>
+                      </div>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -20,12 +31,10 @@
                             <th style="width: 20px">No</th>
                             <th>No Surat</th>
                             <th>Tanggal</th>
-                            <th>Prihal</th>
-                            <th>Keterangan </th>
+                            <th>Pembuat Kajian</th>
                             <th>Tujuan</th>
-                            <th>File</th>
-                            <th>Kirim</th>
-                            <th style="width: 80px">Aksi</th>
+                            <th>Kajian</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -36,47 +45,26 @@
                                 {{ $no }}
                             </td>
                             <td>
-                                {{ $item->no_surat }}
+                                {{$item->surat->no_surat}}
                             </td>
                             <td>
-                                {{$item->tanggal_surat}}
+                                Dibuat Pada : {{ $item->tanggal_kajian }}
+                                <br>Jam : {{ $item->jam_kajian }}
                             </td>
-                            <td>
-                                {{ $item->prihal }}
-                            </td>
-                            <td>
-                                {{ $item->keterangan }}
-                            </td>
+                            <td>{{ $item->user}}</td>
                             <td>
                                 {{$item->tujuan}}
                             </td>
                             <td>
-                               <a href="/surat_storage/{{ $item->file }}">file</a>
+                                {{ $item->kajian }}
                             </td>
-                            <td>
-                                <a class="btn btn-warning"
-                                href="{{ route('disposisi.edit', $item->id) }}">
-                                <i class="fas fa-paper-plane"></i>
-                            </a>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success"
-                                        href="{{ route('surat.edit', ['surat'=>$item->id]) }}">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
 
-                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
 
                         </tr>
                         <?php $no++;?>
                         @empty
                         <tr>
-                            <td colspan="4">
+                            <td colspan="5">
                                 Tidak ada data.
                             </td>
                         </tr>

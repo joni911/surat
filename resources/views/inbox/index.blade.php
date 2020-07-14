@@ -25,7 +25,7 @@
                             <th>Tujuan</th>
                             <th>File</th>
                             <th>Kirim</th>
-                            <th style="width: 80px">Aksi</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -55,22 +55,11 @@
                             </td>
                             <td>
                                 <a class="btn btn-warning"
-                                href="{{ route('disposisi.edit', $item->id) }}">
+                                href="{{ route('inbox.edit', $item->id) }}">
                                 <i class="fas fa-paper-plane"></i>
                             </a>
                             </td>
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success"
-                                        href="{{ route('surat.edit', ['surat'=>$item->id]) }}">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
 
-                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
 
                         </tr>
                         <?php $no++;?>

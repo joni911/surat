@@ -9,7 +9,7 @@
         @if ($errors->any())
         <div class="alert alert-warning alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="icon fa fa-warning"></i> Perhatian!</h4>33
+            <h4><i class="icon fa fa-warning"></i> Perhatian!</h4>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -19,12 +19,11 @@
         @endif
         <div class="card">
             <div class="card-header">
-                Ubah Petugas
+                Tambah Surat
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('surat.update', ['surat' => $id]) }}" method="post">
-                    @method('PUT')
-                    @include('surat.form-edit')
+                <form class="form-horizontal" action="{{ route('surat.store') }}"  enctype="multipart/form-data" method="post" >
+                    @include('surat.form')
                 </form>
             </div>
         </div>
@@ -32,9 +31,3 @@
 </div>
 @stop
 @section('plugins.Pace', true)
-@section('js')
-<script type="text/javascript">
-    $("#nisn").prop('disabled', true);
-
-</script>
-@stop

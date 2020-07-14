@@ -30,11 +30,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('surat', 'suratControll');
-    Route::resource('masuk', 'masukControll');
+    Route::resource('inbox', 'masukControll');
     Route::resource('expedisi', 'expedisiControll');
     Route::resource('profile', 'profileControll');
     Route::resource('user', 'userControll');
     Route::resource('jabatan', 'jabatanControll');
+    Route::resource('disposisi', 'disposisiControll');
     Route::get('/history', 'PembayaranController@history');
     Route::get('/laporan', function () {
     return view('laporan');

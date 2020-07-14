@@ -1,7 +1,7 @@
 @extends('adminlte::page')
-@section('title', 'Surat')
+@section('title', 'Disposisi')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Surat</h1>
+<h1 class="m-0 text-dark">Manajemen Disposisi</h1>
 @stop
 @section('content')
 <div class="row">
@@ -19,12 +19,13 @@
         @endif
         <div class="card">
             <div class="card-header">
-                Ubah Petugas
+                Kirim Surat Anda
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('surat.update', ['surat' => $id]) }}" method="post">
+
+                <form class="form-horizontal" action="{{ route('disposisi.update', ['disposisi' => $id]) }}" method="post">
                     @method('PUT')
-                    @include('surat.form-edit')
+                    @include('disposisi.form')
                 </form>
             </div>
         </div>

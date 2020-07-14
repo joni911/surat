@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class surat extends Model
 {
     protected $fillable = [
-        'user_id', 'jabatan_id', 'no_surat','prihal', 'tujuan','keterangan','file','tanggal_surat'
+        'user_id', 'jabatan_id', 'no_surat','prihal','tujuan','keterangan','file','tanggal_surat'
     ];
 
     public function user()
     {
-        return $this->belongsToMany('App\user');
+        return $this->belongsTo('App\user');
     }
 
-    public function jabatan()
+    public function disposisi()
     {
-        return $this->belongsToMany('App\jabatan');
+        return $this->hasMany('App\disposisi');
     }
 
 }

@@ -36,9 +36,14 @@ class AppServiceProvider extends ServiceProvider {
                             'icon' => 'fas fa-fw fa-file'
                             ],
                             [
-                            'text' => 'Expedisi',
-                            'url' => 'expedisi',
-                            'icon' => 'fas fa-fw fa-paper-plane'
+                                'text' => 'Surat Masuk',
+                                'url' => 'inbox',
+                                'icon' => 'fas fa-fw fa-inbox'
+                            ],
+                            [
+                                'text' => 'Disposisi',
+                                'url' => 'disposisi',
+                                'icon' => 'fas fa-fw fa-paper-plane'
                             ],
                             ['header' => 'MENU USER'],
                             [
@@ -69,12 +74,12 @@ class AppServiceProvider extends ServiceProvider {
                             ],
                             [
                                 'text' => 'Surat Masuk',
-                                'url' => 'masuk',
+                                'url' => 'inbox',
                                 'icon' => 'fas fa-fw fa-inbox'
-                                ],
+                            ],
                             [
-                            'text' => 'Expedisi',
-                            'url' => 'expedisi',
+                            'text' => 'Disposisi',
+                            'url' => 'disposisi',
                             'icon' => 'fas fa-fw fa-paper-plane'
                             ],
                             ['header' => 'MENU USER'],

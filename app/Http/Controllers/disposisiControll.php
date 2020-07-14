@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\disposisi;
 use App\surat;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class masukControll extends Controller
+class disposisiControll extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +18,10 @@ class masukControll extends Controller
      */
     public function index()
     {
-        $data = Auth::user();
-        //echo $data->jabatan->jabatan;
-        $tampil['data'] = surat::where('tujuan',$data->jabatan->jabatan)->paginate(10);
-        return view('inbox.index',$tampil);
+        $data = surat::paginate(10);
+
+        $tampil['data'] = $data;
+        return view('disposisi.index',$tampil);
     }
 
     /**
@@ -52,7 +53,10 @@ class masukControll extends Controller
      */
     public function show($id)
     {
-        //
+        $data = disposisi::where('surat_id',$id)->paginate(10);
+        $tampil['data'] = $data;
+        return view('disposisi.list',$tampil);
+
     }
 
     /**
@@ -63,14 +67,10 @@ class masukControll extends Controller
      */
     public function edit($id)
     {
-
         $data = surat::findOrFail($id);
         $tampil =[];
         $tampil['data'] = Auth::user();
-        $disposisi = [];
-        $disposisi['data'] = disposisi::where('surat_id',$id)->get();
-      // echo $tampil['data'];
-        return view('inbox.edit',['surat' => $data,'tampil'=>$tampil['data'],'disposisi'=>$disposisi['data']]);
+        return view('disposisi.edit',$data,$tampil);
     }
 
     /**
@@ -107,6 +107,10 @@ class masukControll extends Controller
                 "success",
                 "Data berhasil dikirim ke ".$request->tujuan
                 );
+
+            // Auth::logout();
+            // return redirect()->route("login");
+
     }
 
     /**

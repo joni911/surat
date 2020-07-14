@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Surat')
+@section('title', 'Petugas')
 @section('content_header')
 <h1 class="m-0 text-dark">Manajemen Petugas</h1>
 @stop
@@ -8,23 +8,20 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary btn-md" href="{{ route('surat.create') }}">
+                <a class="btn btn-primary btn-md" href="{{ route('petugas.create') }}">
                     <i class="fa fa-plus"></i> Tambah
                 </a>
-
+                <a class="btn btn-primary btn-md" href="{{ route('petugas.turt') }}">
+                    <i class="fa fa-plus"></i> Staff Turt
+                </a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th style="width: 20px">No</th>
-                            <th>No Surat</th>
-                            <th>Tanggal</th>
-                            <th>Prihal</th>
-                            <th>Keterangan </th>
-                            <th>Tujuan</th>
-                            <th>File</th>
-                            <th>Kirim</th>
+                            <th style="width: 20px">#</th>
+                            <th>Nama</th>
+                            <th>Email</th>
                             <th style="width: 80px">Aksi</th>
                         </tr>
                     </thead>
@@ -36,47 +33,27 @@
                                 {{ $no }}
                             </td>
                             <td>
-                                {{ $item->no_surat }}
+                                {{ $item->name }}
                             </td>
                             <td>
-                                {{$item->tanggal_surat}}
-                            </td>
-                            <td>
-                                {{ $item->prihal }}
-                            </td>
-                            <td>
-                                {{ $item->keterangan }}
-                            </td>
-                            <td>
-                                {{$item->tujuan}}
-                            </td>
-                            <td>
-                               <a href="/surat_storage/{{ $item->file }}">file</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-warning"
-                                href="{{ route('disposisi.edit', $item->id) }}">
-                                <i class="fas fa-paper-plane"></i>
-                            </a>
+                                {{ $item->email }}
                             </td>
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-success"
-                                        href="{{ route('surat.edit', ['surat'=>$item->id]) }}">
+                                        href="{{ route('petugas.edit', ['petuga'=>$item->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-
                                     <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                             </td>
-
                         </tr>
                         <?php $no++;?>
                         @empty
                         <tr>
-                            <td colspan="4">
+                            <td colspan="4">29
                                 Tidak ada data.
                             </td>
                         </tr>

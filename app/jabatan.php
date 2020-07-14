@@ -16,6 +16,6 @@ class jabatan extends Model
     }
     public function surat()
     {
-        return $this->hasMany('App\user');
+        return $this->belongsToMany('App\surat');
     }
 }

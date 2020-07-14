@@ -19,7 +19,7 @@ class suratControll extends Controller
     {
         $data = Auth::user();
         //echo $data->jabatan->jabatan;
-       $tampil['data'] = surat::where('jabatan_id',$data->jabatan->id)->paginate(10);
+       $tampil['data'] = surat::where('user_id',$data->id)->paginate(10);
         return view('surat.index',$tampil);
     }
 
@@ -45,7 +45,6 @@ class suratControll extends Controller
         $this->validate($request, [
             'no_surat' => 'required',
             'file' => 'required',
-            'tujuan' => 'required',
             'prihal' => 'required',
             'keterangan'=> 'required',
             'tanggal_masuk' => 'required'
@@ -63,11 +62,10 @@ class suratControll extends Controller
             $file->move($tujuan_upload,$nama_file);
             surat::create([
                 'user_id' => $nama->id,
-                'jabatan_id' => $nama->jabatan->id,
                 'no_surat' => $request->no_surat,
                 'tanggal_surat' => $request->tanggal_masuk,
-                'prihal' => $request->prihal,
                 'tujuan' => $request->tujuan,
+                'prihal' => $request->prihal,
                 'file' => $nama_file,
                 'keterangan' => $request->keterangan,
             ]);
@@ -96,7 +94,9 @@ class suratControll extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = user::findOrFail($id);
+        echo $data->name." Jabatan : ".$data->jabatan->jabatan;
+       // return view('surat.edit',$data);
     }
 
     /**
