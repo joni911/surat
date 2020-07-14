@@ -15,9 +15,9 @@
   <label for="">Jabatan</label>
     <div class="col-sm-10">
         <select class="form-control" name="jabatan" id="">
-            <option >Turt</option>
+            <option >TURT</option>
             <option >IT</option>
-            <option >Kasubag Umum </option>
+            <option >Kasubag Umum</option>
             <option >Kasubag Oprasional</option>
             <option >Sekpri Dirut</option>
             <option >Dirut</option>
