@@ -7,13 +7,30 @@
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <p class="mb-0">You are logged in!</p>
-                </div>
+<div class="card-body">
+
+
+
+        @forelse($notifications as $notification)
+            <div class="alert alert-success" role="alert">
+                [{{ $notification->created_at }}] User {{ $notification->data['name'] }} ({{ $notification->data['email'] }}) has just registered.
+                <a href="/gone/{{$notification->id}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+                    lihat
+                </a>
             </div>
-        </div>
-    </div>
-@stop
+
+            @if($loop->last)
+                <a href="#" id="mark-all">
+                    Mark all as read
+                </a>
+            @endif
+        @empty
+            There are no new notifications
+        @endforelse
+
+</div>
+@endsection
+@section('scripts')
+@parent
+
+@endsection

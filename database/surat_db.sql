@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 14, 2020 at 02:58 PM
+-- Generation Time: Jul 16, 2020 at 02:50 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.7
 
@@ -56,7 +56,10 @@ INSERT INTO `disposisis` (`id`, `surat_id`, `user`, `tujuan`, `kajian`, `tanggal
 (11, 10, 'arta', 'Kasubag Oprasional', 'lanjut ke dirut', '2020-07-14', '14:41:00', '2020-07-14 06:41:00', '2020-07-14 06:41:00'),
 (12, 10, 'gusti', 'Sekpri Dirut', 'dewi lanjut ke bapak dirut', '2020-07-14', '14:41:36', '2020-07-14 06:41:36', '2020-07-14 06:41:36'),
 (13, 10, 'dewi', 'Dirut', 'sudah sesiai mohon di acc', '2020-07-14', '14:43:25', '2020-07-14 06:43:25', '2020-07-14 06:43:25'),
-(14, 10, 'Ir Made Astawa', 'TURT', 'segera eksekusi', '2020-07-14', '14:43:48', '2020-07-14 06:43:48', '2020-07-14 06:43:48');
+(14, 10, 'Ir Made Astawa', 'TURT', 'segera eksekusi', '2020-07-14', '14:43:48', '2020-07-14 06:43:48', '2020-07-14 06:43:48'),
+(15, 12, 'lestari', 'Sekpri Dirut', 'mohon di acc pembelian atk sudah sesuai', '2020-07-16', '02:45:22', '2020-07-15 18:45:22', '2020-07-15 18:45:22'),
+(16, 12, 'dewi', 'Dirut', 'mohon di acc pak sudah sesuai', '2020-07-16', '02:46:13', '2020-07-15 18:46:13', '2020-07-15 18:46:13'),
+(17, 12, 'Ir Made Astawa', 'TURT', 'bisa di lanjutkan sudah saya acc', '2020-07-16', '02:46:51', '2020-07-15 18:46:51', '2020-07-15 18:46:51');
 
 -- --------------------------------------------------------
 
@@ -109,7 +112,9 @@ INSERT INTO `jabatans` (`id`, `user_id`, `jabatan`, `created_at`, `updated_at`) 
 (7, 4, 'Kasubag UMUM', '2020-07-12 07:05:20', '2020-07-14 06:30:43'),
 (8, 6, 'Dirut', '2020-07-14 06:42:43', '2020-07-14 06:42:43'),
 (9, 5, 'Sekpri Dirut', '2020-07-14 06:42:49', '2020-07-14 06:42:49'),
-(10, 7, 'TURT', '2020-07-14 06:47:15', '2020-07-14 06:47:15');
+(10, 7, 'TURT', '2020-07-14 06:47:15', '2020-07-14 06:47:15'),
+(11, 8, 'TURT', '2020-07-15 18:38:10', '2020-07-15 18:38:10'),
+(12, 9, 'Kasubag UMUM', '2020-07-15 18:41:19', '2020-07-15 18:44:39');
 
 -- --------------------------------------------------------
 
@@ -134,7 +139,32 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2020_07_11_144341_create_surats_table', 2),
 (5, '2020_07_11_155947_create_jabatans_table', 2),
 (6, '2020_07_11_160924_create_expedisis_table', 2),
-(7, '2020_07_14_024256_create_disposisis_table', 3);
+(7, '2020_07_14_024256_create_disposisis_table', 3),
+(8, '2020_07_15_065852_create_notifications_table', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` bigint(20) UNSIGNED NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
+('545f1057-55eb-49b4-9dae-8e34bb72fd57', 'App\\Notifications\\NotifikasiSurat', 'App\\User', 1, '{\"name\":\"admin\",\"email\":\"admin@bankpasar.co.id\"}', NULL, '2020-07-15 00:23:48', '2020-07-15 00:23:48');
 
 -- --------------------------------------------------------
 
@@ -176,7 +206,9 @@ INSERT INTO `surats` (`id`, `user_id`, `no_surat`, `keterangan`, `tujuan`, `prih
 (7, 1, 'SPP 1234', 'keterangan untuk sekpri', '', 'untuk sekpri', 'SPP 1234-untuk sekpri.pdf', '2020-07-12', '2020-07-12 07:07:52', '2020-07-12 07:07:52'),
 (8, 1, 'umum', 'umum', '', 'umum', 'umum-umum.torrent', '2020-07-12', '2020-07-12 07:25:31', '2020-07-12 07:25:31'),
 (9, 1, '123', 'Nie Li, one of the strongest Demon Spiritist in his past life standing at the pinnacle of the martial world , however he lost his life during the battle with Sage Emperor and the six deity ranked beast, his soul was then reborn back in time back to when he is still 13. Although he’s the weakest in his class with the lowest talent at only Red soul realm, with the aid of the vast knowledge which he accumulated in his previous life, he trained faster then anyone. Trying to protect the city which in the coming future was being assaulted by beast and ended up being destroyed as well as protecting his lover, friends and family who died by the beast assault. and to destroy the Sacred family whom abandon their duty and betrayed the city in his past life.', 'it', '1233332', '123-1233332.xlsx', '2020-07-14', '2020-07-14 04:35:17', '2020-07-14 05:34:45'),
-(10, 1, 'S/07/14/2020', 'Simple Where Clauses\r\n\r\nYou may use the where method on a query builder instance to add where clauses to the query. The most basic call to where requires three arguments. The first argument is the name of the column. The second argument is an operator, which can be any of the database\'s supported operators. Finally, the third argument is the value to evaluate against the column.\r\n\r\nFor example, here is a query that verifies the value of the \"votes\" column is equal to 100:', 'TURT', 'Pembelian PC', 'S/07/14/2020-Pembelian PC.pdf', '2020-07-14', '2020-07-14 06:24:09', '2020-07-14 06:43:48');
+(10, 1, 'S/07/14/2020', 'Simple Where Clauses\r\n\r\nYou may use the where method on a query builder instance to add where clauses to the query. The most basic call to where requires three arguments. The first argument is the name of the column. The second argument is an operator, which can be any of the database\'s supported operators. Finally, the third argument is the value to evaluate against the column.\r\n\r\nFor example, here is a query that verifies the value of the \"votes\" column is equal to 100:', 'TURT', 'Pembelian PC', 'S/07/14/2020-Pembelian PC.pdf', '2020-07-14', '2020-07-14 06:24:09', '2020-07-14 06:43:48'),
+(11, 1, '123', '12333', 'Kasubag UMUM', '123', '123-123.xlsx', '2020-07-16', '2020-07-15 18:14:53', '2020-07-15 18:14:53'),
+(12, 8, 'S 07/16/2020', 'Permohonan pemebelian alat atk untuk keperluan printing di kantor', 'TURT', 'Pengajuan Pembelian ATK', 'S 07/16/2020-Pengajuan Pembelian ATK.xlsx', '2020-07-16', '2020-07-15 18:40:10', '2020-07-15 18:46:51');
 
 -- --------------------------------------------------------
 
@@ -206,7 +238,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `hak_akses`, `email_verified_at`, `p
 (4, 'arta', 'arta@bankpasar.co.id', 'user', NULL, '$2y$10$1IEbUInFCNsBjsXixfE37.ngoVaQDiYmmHamgUwcmCN1DidD7Zy0O', NULL, '2020-07-12 07:05:09', '2020-07-12 07:05:09'),
 (5, 'dewi', 'dewi@bankpasar.co.id', 'user', NULL, '$2y$10$M1t.yO8dqGka2DtHRDuJPuCCyYDEYHHK2xhskgNZAAdZAgUkZVy3.', NULL, '2020-07-14 06:42:00', '2020-07-14 06:42:07'),
 (6, 'Ir Made Astawa', 'astawa@bankpasar.co.id', 'user', NULL, '$2y$10$8b.UCIWtWYja8rb66AoebeYGOT6N.UW5i6FOF2cR1YCkh/mLh3mme', NULL, '2020-07-14 06:42:31', '2020-07-14 06:42:31'),
-(7, 'putu', 'putu@bankpasar.co.id', 'user', NULL, '$2y$10$f.Qezz7VBogSClkpdLknBOOPuDJ9e/vLOwCwjhBMdyKq8h/7Y9fDm', NULL, '2020-07-14 06:47:02', '2020-07-14 06:47:02');
+(7, 'putu', 'putu@bankpasar.co.id', 'user', NULL, '$2y$10$f.Qezz7VBogSClkpdLknBOOPuDJ9e/vLOwCwjhBMdyKq8h/7Y9fDm', NULL, '2020-07-14 06:47:02', '2020-07-14 06:47:02'),
+(8, 'rusi', 'rusi@bankpasar.co.id', 'user', NULL, '$2y$10$q9AOwiaQQhd8Kg44Zh5vGenyO3L4L8BW4oUhYWJwI9hpljjJ/.Ram', NULL, '2020-07-15 18:37:58', '2020-07-15 18:37:58'),
+(9, 'lestari', 'lestari@bankpasar.co.id', 'user', NULL, '$2y$10$Y9rfPs.Rsr7VUys0L478CuuNZ1d2gwTb87eBzL/sttMFmktwDrg7S', NULL, '2020-07-15 18:41:10', '2020-07-15 18:41:10');
 
 --
 -- Indexes for dumped tables
@@ -244,6 +278,13 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -270,7 +311,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `disposisis`
 --
 ALTER TABLE `disposisis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `expedisis`
@@ -288,25 +329,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jabatans`
 --
 ALTER TABLE `jabatans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `surats`
 --
 ALTER TABLE `surats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

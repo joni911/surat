@@ -22,7 +22,9 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
-
+Route::get('gone/{id}', function ($id) {
+echo $id;
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -40,6 +42,10 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/laporan', function () {
     return view('laporan');
     });
+
+    Route::post('/mark-as-read', 'HomeController@markNotification')->name('markNotification');
+    // Permissions
+
     route::get('/laporan/kelas', 'LaporanController@kelas');
     route::get('/laporan/spp', 'LaporanController@spp');
     route::get('/laporan/siswa', 'LaporanController@siswa');

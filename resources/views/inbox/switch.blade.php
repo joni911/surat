@@ -70,6 +70,6 @@
           </div>
         @break
         @default
-        <p>Kontak it akun anda belum memiliki ijin mengakses menu ini</p>
+        <p>Kontak it akun anda belum memiliki ijin mengakses menu ini {{$tampil->jabatan->jabatan}}</p>
     @endswitch
 </div>

@@ -13,7 +13,7 @@
         <select class="form-control" name="jabatan" id="">
             <option >TURT</option>
             <option >IT</option>
-            <option >Kasubag Umum </option>
+            <option >Kasubag UMUM</option>
             <option >Kasubag Oprasional</option>
             <option >Sekpri Dirut</option>
             <option >Dirut</option>
