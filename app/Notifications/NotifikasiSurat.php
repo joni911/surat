@@ -11,6 +11,7 @@ class NotifikasiSurat extends Notification
 {
     use Queueable;
 
+    protected $disposisi;
     /**
      * Create a new notification instance.
      *
@@ -18,7 +19,7 @@ class NotifikasiSurat extends Notification
      */
     public function __construct()
     {
-        //
+        $this->disposisi = $disposisi;
     }
 
     /**
