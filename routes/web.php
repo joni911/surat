@@ -1,5 +1,6 @@
 <?php
 
+use App\surat_id;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::get('/home', function() {
 Route::get('gone/{id}', function ($id) {
 echo $id;
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -32,6 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('surat', 'suratControll');
+    Route::resource('suratcode', 'suratcodeControll');
     Route::resource('inbox', 'masukControll');
     Route::resource('expedisi', 'expedisiControll');
     Route::resource('profile', 'profileControll');

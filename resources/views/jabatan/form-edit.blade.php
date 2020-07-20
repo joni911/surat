@@ -3,7 +3,7 @@
   <label for="">User ID</label>
   <div class="col-sm-10">
   <input type="text"
-    class="form-control" name="user_id" id="" aria-describedby="helpId" placeholder="" value="{{$user_id}}" disabled>
+    class="form-control" name="user_id" id="" aria-describedby="helpId" placeholder="" value="{{$name}}" disabled>
 </div>
 </div>
 

@@ -16,7 +16,9 @@
     <div class="col-sm-10">
         <select class="form-control" name="hak_akses" id="">
             <option value="user">User</option>
-            <option value="administrator">Admin</option>
+            <option value="admin">Admin</option>
+            <option value="administrator">Super Admin</option>
+
           </select>
     </div>
 </div>

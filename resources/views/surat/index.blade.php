@@ -114,13 +114,13 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#dd3333',
-            30
             confirmButtonText: 'Hapus',
             cancelButtonText: 'Batal',
         }).then((result) => {
             if (result.value) {
+                39
                 $.ajax({
-                    url: "/petugas/" + id,
+                    url: "/surat/" + id,
                     type: 'DELETE',
                     data: {
                         '_token': $('meta[name=csrf-token]').attr("content"),

@@ -34,13 +34,13 @@
                                 {{ $no }}
                             </td>
                             <td>
-                                {{ $item->user->name }}
+                                {{ $item->name }}
                             </td>
                             <td>
-                                {{ $item->user->hak_akses }}
+                                {{ $item->hak_akses }}
                             </td>
                             <td>
-                                {{ $item->jabatan }}
+                                {{ $item->jabatan->jabatan }}
                             </td>
                             <td>
                                 <div class="btn-group">

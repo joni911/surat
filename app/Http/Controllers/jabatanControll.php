@@ -18,7 +18,7 @@ class jabatanControll extends Controller
      */
     public function index()
     {
-        $data = jabatan::paginate(10);
+        $data = User::paginate(10);
         $tampil['data'] =$data;
         return view('jabatan.index',$tampil);
     }
@@ -73,7 +73,7 @@ class jabatanControll extends Controller
      */
     public function edit($id)
     {
-        $data = jabatan::findOrFail($id);
+        $data = User::findOrFail($id);
 
         return view('jabatan.edit',$data);
     }

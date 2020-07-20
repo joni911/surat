@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class surat extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
     protected $fillable = [
         'user_id', 'jabatan_id', 'no_surat','prihal','tujuan','keterangan','file','tanggal_surat'
     ];
@@ -19,5 +23,7 @@ class surat extends Model
     {
         return $this->hasMany('App\disposisi');
     }
+
+
 
 }

@@ -31,6 +31,11 @@ class AppServiceProvider extends ServiceProvider {
                         $event->menu->add(
                             ['header' => 'MENU SURAT'],
                             [
+                                'text' => 'Kode Surat',
+                                'url' => 'suratcode',
+                                'icon' => 'fas fa-fw fa-barcode'
+                                ],
+                            [
                             'text' => 'Surat',
                             'url' => 'surat',
                             'icon' => 'fas fa-fw fa-file'
@@ -64,7 +69,7 @@ class AppServiceProvider extends ServiceProvider {
                         );
                         break;
 
-                    case 'user':
+                    case 'admin':
                         $event->menu->add(
                             ['header' => 'MENU SURAT'],
                             [
@@ -91,6 +96,27 @@ class AppServiceProvider extends ServiceProvider {
                             );
                         break;
                     default:
+                    case 'user':
+                        $event->menu->add(
+                            ['header' => 'MENU SURAT'],
+                            [
+                            'text' => 'Surat',
+                            'url' => 'surat',
+                            'icon' => 'fas fa-fw fa-file'
+                            ],
+                            [
+                                'text' => 'Surat Masuk',
+                                'url' => 'inbox',
+                                'icon' => 'fas fa-fw fa-inbox'
+                            ],
+                            ['header' => 'MENU USER'],
+                            [
+                            'text' => 'Profile',
+                            'url' => 'profile',
+                            'icon' => 'fas fa-fw fa-user-tie'
+                            ]
+                            );
+                        break;
                     $event->menu->add(
                         [
                             'text' => 'Profile',

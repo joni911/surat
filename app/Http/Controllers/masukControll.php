@@ -103,7 +103,7 @@ class masukControll extends Controller
                 'jam_kajian' => $jam
             ]);
 
-            return redirect()->route("surat.index")->with(
+            return redirect()->route("inbox.index")->with(
                 "success",
                 "Data berhasil dikirim ke ".$request->tujuan
                 );

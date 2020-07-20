@@ -1,11 +1,24 @@
 {{ csrf_field() }}
-<div class="form-group">
-    <label for="name" class="col-sm-2 control-label">No Surat</label>
-    <div class="col-sm-10">
-        <input type="text" name="no_surat" class="form-control">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            @include('surat.switch')
+        </div>
+
+        <div class="col-sm-5">
+            <div class="form-group">
+              <label for="">Kode Surat</label>
+              <select class="form-control" name="no_surat" id="">
+                @foreach ($kode as $k)
+                     <option>{{$k->kode_surat}} {{$k->keterangan}}</option>
+                @endforeach
+              </select>
+            </div>
+        </div>
     </div>
+
 </div>
-@include('surat.switch')
+
   <div class="form-group">
     <label for="">Prihal</label>
     <div class="col-sm-10">
