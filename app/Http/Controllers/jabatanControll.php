@@ -18,9 +18,11 @@ class jabatanControll extends Controller
      */
     public function index()
     {
-        $data = User::paginate(10);
+        $data = User::get();
+        $tampil = [];
         $tampil['data'] =$data;
-        return view('jabatan.index',$tampil);
+
+        return view('jabatan.index', $tampil);
     }
 
     /**

@@ -66,7 +66,7 @@
                 </table>
             </div>
             <div class="card-footer clearfix text-right">
-                {{ $data->links() }}
+
             </div>
         </div>
     </div>

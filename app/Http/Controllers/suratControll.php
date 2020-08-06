@@ -48,6 +48,11 @@ class suratControll extends Controller
      */
     public function store(Request $request)
     {
+        //fix number 0001/b01/vii/tahun
+        //tanggal surat manual
+        //nomor surat asli / masuk req
+        //tgl surat req
+        //tambah alur
         $this->validate($request, [
             'no_surat' => 'required',
             'file' => 'required',
@@ -68,11 +73,9 @@ class suratControll extends Controller
             ->first()
             ;
             // echo $serial->serial;
-            $year_check = surat_id::where('kode_id',$request->no_surat)
-            ->orderBy('created_at','desc')
-            ->first()
+            $year_check = 2020;
             ;
-            if ($year!=$year_check->tahun) {
+            if ($year!=$year_check) {
                 surat_id::create([
                     'kode_id' => $request->no_surat,
                     'serial' => 1,

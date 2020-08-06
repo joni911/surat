@@ -1,0 +1,188 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Jul 23, 2020 at 02:37 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.4.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `rpl`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbarang`
+--
+
+CREATE TABLE `tbarang` (
+  `Id_barang` varchar(10) NOT NULL,
+  `Nama_barang` varchar(50) NOT NULL,
+  `Jumlah_barang` int(11) NOT NULL DEFAULT '0',
+  `Jenis_barang` varchar(10) NOT NULL DEFAULT '0',
+  `Harga_barang` decimal(10,0) NOT NULL DEFAULT '0',
+  `id_supplier` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tkostumer`
+--
+
+CREATE TABLE `tkostumer` (
+  `Id_kostumer` varchar(10) NOT NULL,
+  `Nama_kostumer` varchar(50) NOT NULL,
+  `Alamat` varchar(50) NOT NULL,
+  `Jenis_kelamin` char(10) NOT NULL,
+  `Nohp` int(11) NOT NULL,
+  `Email` varchar(50) NOT NULL DEFAULT '',
+  `Password` varchar(50) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tpembayaran`
+--
+
+CREATE TABLE `tpembayaran` (
+  `Id_pembayaran` varchar(10) NOT NULL,
+  `jumlah_pembayaran` decimal(10,0) NOT NULL,
+  `No_invoice` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tpemesanan`
+--
+
+CREATE TABLE `tpemesanan` (
+  `No_invoice` varchar(10) NOT NULL DEFAULT '',
+  `Tgl_pemesanan` date NOT NULL,
+  `jumlsh` decimal(10,0) NOT NULL,
+  `id_kostomer` varchar(10) NOT NULL DEFAULT '0',
+  `id_pembayaran` varchar(10) NOT NULL DEFAULT '0',
+  `id_barang` varchar(10) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tpengiriman`
+--
+
+CREATE TABLE `tpengiriman` (
+  `Resi` varchar(20) NOT NULL,
+  `Nama_penerima` varchar(50) NOT NULL,
+  `Alamat_penerima` varchar(100) NOT NULL,
+  `No_hp_penerima` int(11) NOT NULL DEFAULT '0',
+  `id_pembayaran` varchar(10) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsupplier`
+--
+
+CREATE TABLE `tsupplier` (
+  `id_supplier` varchar(20) NOT NULL DEFAULT '',
+  `nama_supplier` varchar(50) NOT NULL DEFAULT '',
+  `alamat_supplier` varchar(100) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbarang`
+--
+ALTER TABLE `tbarang`
+  ADD PRIMARY KEY (`Id_barang`),
+  ADD KEY `FK_tbarang_tsupplier` (`id_supplier`);
+
+--
+-- Indexes for table `tkostumer`
+--
+ALTER TABLE `tkostumer`
+  ADD PRIMARY KEY (`Id_kostumer`);
+
+--
+-- Indexes for table `tpembayaran`
+--
+ALTER TABLE `tpembayaran`
+  ADD PRIMARY KEY (`Id_pembayaran`),
+  ADD KEY `FK_tpembayaran_tpemesanan` (`No_invoice`);
+
+--
+-- Indexes for table `tpemesanan`
+--
+ALTER TABLE `tpemesanan`
+  ADD PRIMARY KEY (`No_invoice`),
+  ADD KEY `id_kostomer` (`id_kostomer`),
+  ADD KEY `FK_tpemesanan_tbarang` (`id_barang`),
+  ADD KEY `FK_tpemesanan_tpembayaran` (`id_pembayaran`);
+
+--
+-- Indexes for table `tpengiriman`
+--
+ALTER TABLE `tpengiriman`
+  ADD PRIMARY KEY (`Resi`),
+  ADD KEY `FK_TPengiriman_tpembayaran` (`id_pembayaran`);
+
+--
+-- Indexes for table `tsupplier`
+--
+ALTER TABLE `tsupplier`
+  ADD PRIMARY KEY (`id_supplier`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbarang`
+--
+ALTER TABLE `tbarang`
+  ADD CONSTRAINT `FK_tbarang_tsupplier` FOREIGN KEY (`id_supplier`) REFERENCES `tsupplier` (`id_supplier`);
+
+--
+-- Constraints for table `tpembayaran`
+--
+ALTER TABLE `tpembayaran`
+  ADD CONSTRAINT `FK_tpembayaran_tpemesanan` FOREIGN KEY (`No_invoice`) REFERENCES `tpemesanan` (`No_invoice`);
+
+--
+-- Constraints for table `tpemesanan`
+--
+ALTER TABLE `tpemesanan`
+  ADD CONSTRAINT `FK_tpemesanan_tbarang` FOREIGN KEY (`id_barang`) REFERENCES `tbarang` (`Id_barang`),
+  ADD CONSTRAINT `FK_tpemesanan_tpembayaran` FOREIGN KEY (`id_pembayaran`) REFERENCES `tpembayaran` (`Id_pembayaran`),
+  ADD CONSTRAINT `id_kostomer` FOREIGN KEY (`id_kostomer`) REFERENCES `tkostumer` (`Id_kostumer`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tpengiriman`
+--
+ALTER TABLE `tpengiriman`
+  ADD CONSTRAINT `FK_TPengiriman_tpembayaran` FOREIGN KEY (`id_pembayaran`) REFERENCES `tpembayaran` (`Id_pembayaran`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

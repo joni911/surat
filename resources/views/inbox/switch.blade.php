@@ -18,12 +18,14 @@
         <div class="form-group">
             <label for="">Tujuan</label>
               <div class="col-sm-11">
+
                   <select class="form-control" name="tujuan" id="">
                       <option>Kasubag UMUM</option>
                       <option>Kasubag Oprasional</option>
                     </select>
               </div>
           </div>
+        
             @break
         @case('Kasubag UMUM')
         <div class="form-group">
