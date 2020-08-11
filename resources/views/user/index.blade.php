@@ -21,6 +21,7 @@
                             <th>Nama</th>
                             <th>Hak Akses</th>
                             <th>Email</th>
+                            <th>No HP</th>
                             <th style="width: 80px">Aksi</th>
                         </tr>
                     </thead>
@@ -40,6 +41,7 @@
                             <td>
                                 {{ $item->email }}
                             </td>
+                            <td>{{ $item->nomor_hp }}</td>
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-success"

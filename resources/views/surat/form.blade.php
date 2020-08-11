@@ -10,7 +10,7 @@
               <label for="">Kode Surat</label>
               <select class="form-control" name="no_surat" id="">
                 @foreach ($kode as $k)
-                     <option>{{$k->kode_surat}} {{$k->keterangan}}</option>
+                     <option value="{{$k->kode_surat}}">{{$k->kode_surat}} {{$k->keterangan}}</option>
                 @endforeach
               </select>
             </div>

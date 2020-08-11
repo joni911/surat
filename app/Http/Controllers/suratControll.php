@@ -10,6 +10,7 @@ use App\suratcode;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class suratControll extends Controller
 {
@@ -22,7 +23,9 @@ class suratControll extends Controller
     {
         $data = Auth::user();
         //echo $data->jabatan->jabatan;
-       $tampil['data'] = surat::where('user_id',$data->id)->paginate(10);
+       $tampil['data'] = surat::where('user_id',$data->id)
+       ->OrderBy('created_at','desc')
+       ->paginate(10);
         return view('surat.index',$tampil);
     }
 
@@ -62,7 +65,7 @@ class suratControll extends Controller
             ]);
             //isi id_user dengan id user yang login
             $nama = Auth::user();
-
+           
             // auto generate number
             $mytime = Carbon::now();
             $month = $mytime->month;
@@ -74,7 +77,7 @@ class suratControll extends Controller
             ;
             // echo $serial->serial;
             $year_check = 2020;
-            ;
+            
             if ($year!=$year_check) {
                 surat_id::create([
                     'kode_id' => $request->no_surat,
@@ -84,7 +87,7 @@ class suratControll extends Controller
                 ]);
                 $no_surat =surat_id::latest('created_at')->first();
                 echo "Start a new year : ";
-                echo $no_surat->kode_id.'/'.str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->bulan.'/'.$no_surat->tahun;
+                echo str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->kode_id.'/'.$no_surat->bulan.'/'.$no_surat->tahun;
             } else {
                 if ($serial!=null) {
                     $new_serial = $serial->serial;
@@ -98,7 +101,7 @@ class suratControll extends Controller
                     ]);
                     $no_surat =surat_id::latest('created_at')->first();
                     echo "continue ";
-                    echo $no_surat->kode_id.'/'.str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->bulan.'/'.$no_surat->tahun;
+                    echo str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->kode_id.'/'.$no_surat->bulan.'/'.$no_surat->tahun;
                 } else {
                     surat_id::create([
                         'kode_id' => $request->no_surat,
@@ -108,11 +111,12 @@ class suratControll extends Controller
                     ]);
                     $no_surat =surat_id::latest('created_at')->first();
                     echo "Start a new : ";
-                    echo $no_surat->kode_id.'/'.str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->bulan.'/'.$no_surat->tahun;
+                    echo str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->kode_id.'/'.$no_surat->bulan.'/'.$no_surat->tahun;
                 }
             }
+           
 
-            //$nama_file =  Storage::disk('s3')->url($path);
+            // $nama_file =  Storage::disk('s3')->url($path);
 
             $file = $request->file('file');
 
@@ -122,7 +126,7 @@ class suratControll extends Controller
             $file->move($tujuan_upload,$nama_file);
             surat::create([
                 'user_id' =>$nama->id,
-                'no_surat' => $no_surat->kode_id.'/'.str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->bulan.'/'.$no_surat->tahun,
+                'no_surat' => str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->kode_id.'/'.$no_surat->bulan.'/'.$no_surat->tahun,
                 'tanggal_surat' => $request->tanggal_masuk,
                 'tujuan' => $request->tujuan,
                 'prihal' => $request->prihal,

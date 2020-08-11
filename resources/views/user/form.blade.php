@@ -12,6 +12,12 @@
     </div>
 </div>
 <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">Nomor HP</label>
+    <div class="col-sm-10">
+        <input type="text" name="nomor_hp" class="form-control" value="{{ $nomor_hp ?? '' }}">
+    </div>
+</div>
+<div class="form-group">
     <label for="">Akses</label>
     <div class="col-sm-10">
         <select class="form-control" name="hak_akses" id="">

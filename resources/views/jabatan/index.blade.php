@@ -45,7 +45,7 @@
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-success"
-                                        href="{{ route('jabatan.edit', ['jabatan'=>$item->id]) }}">
+                                        href="{{ route('jabatan.edit', ['jabatan'=>$item->jabatan->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">

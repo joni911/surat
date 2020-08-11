@@ -46,11 +46,13 @@ class userControll extends Controller
         //enkripsi password
         $enkripsi = Hash::make('admin');
         $request->merge(['password' => $enkripsi]);
-
         //isi hak_akses dengan 'petugas'
 
         $request->merge(['hak_akses' => $request->hak_akses]);
-        $dataUser = User::create($request->all());
+        $dataUser = User::create(
+            $request->all()
+        );
+        
         return redirect()->route("user.index")->with(
             "success",
             "Data berhasil disimpan."
@@ -98,6 +100,7 @@ class userControll extends Controller
             $data->name = $request->name;
             $data->email = $request->email;
             $data->hak_akses = $request->hak_akses;
+            $data->nomor_hp = $request->nomor_hp;
             //jika password tidak kosong
             $data->save();
             return redirect()->route("user.index")->with(

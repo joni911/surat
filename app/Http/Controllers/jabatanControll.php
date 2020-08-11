@@ -18,7 +18,7 @@ class jabatanControll extends Controller
      */
     public function index()
     {
-        $data = User::get();
+        $data = User::all();
         $tampil = [];
         $tampil['data'] =$data;
 

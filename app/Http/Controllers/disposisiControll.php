@@ -18,7 +18,7 @@ class disposisiControll extends Controller
      */
     public function index()
     {
-        $data = surat::paginate(10);
+        $data = surat::OrderBy('created_at','desc')->paginate(10);
 
         $tampil['data'] = $data;
         return view('disposisi.index',$tampil);

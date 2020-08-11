@@ -57,6 +57,9 @@
                                 <a class="btn btn-warning"
                                 href="{{ route('disposisi.edit', $item->id) }}">
                                 <i class="fas fa-paper-plane"></i>
+                                <a class="btn btn-warning"
+                                href="{{ route('disposisi.edit', $item->id) }}">
+                                <i class="fas fa-whatsapp"></i>
                             </a>
                             </td>
                             <td>
