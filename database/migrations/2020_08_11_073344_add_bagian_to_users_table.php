@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaporanHariansTable extends Migration
+class AddBagianToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateLaporanHariansTable extends Migration
      */
     public function up()
     {
-        Schema::create('laporan_harians', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('user_id')->unique();
-            $table->date('tanggal_laporan');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('bagian');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateLaporanHariansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laporan_harians');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

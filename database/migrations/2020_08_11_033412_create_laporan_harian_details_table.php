@@ -15,8 +15,12 @@ class CreateLaporanHarianDetailsTable extends Migration
     {
         Schema::create('laporan_harian_details', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('laporan_harian_details_id')->unique();
+            $table->string('nama_kegiatan');
+            $table->integer('jumlah_kegiatan');
+            $table->integer('alokasi_waktu');
             $table->timestamps();
-            $table->bigInteger('user_id')->unique();
+           
         });
     }
 

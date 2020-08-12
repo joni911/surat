@@ -15,6 +15,8 @@ class CreateLaporanHarianTotalsTable extends Migration
     {
         Schema::create('laporan_harian_totals', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('laporan_harian_details_id')->unique();
+            $table->double('total');
             $table->timestamps();
         });
     }
