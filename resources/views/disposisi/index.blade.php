@@ -26,35 +26,51 @@
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="width: 20px">No</th>
-                            <th>No Surat</th>
-                            <th>Tanggal</th>
-                            <th>Prihal</th>
-                            <th>Tujuan</th>
-                            <th>Keterangan</th>
-                            <th style="width: 80px">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no=1;?>
-                        @forelse($data as $item)
-                        <tr>
-                            <td>
-                                {{ $no }}
-                            </td>
-                            <td>
-                                {{ $item->no_surat }}
-                            </td>
-                            <td>
-                                {{ $item->tanggal_surat }}
-                            </td>
-                            <td>
-                                {{$item->prihal}}
-                            </td>
-                            <td> {{$item->tujuan}}</td>
-                            <td> {{$item->keterangan}}</td>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 20px">No</th>
+                                <th>No Surat</th>
+                                <th>Asal Surat</th>
+                                <th>Prihal</th>
+                                <th>Tanggal Surat</th>
+                                <th>Tanggal Terima Surat</th>
+                                <th>Keterangan </th>
+                                <th>Tujuan</th>
+                                <th>File</th>
+                                <th>Kirim</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no=1;?>
+                            @forelse($data as $item)
+                            <tr>
+                                <td>
+                                    {{ $no }}
+                                </td>
+
+                                <td>
+                                    {{ $item->no_surat }}
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    {{ $item->prihal }}
+                                </td>
+                                <td>
+                                    {{$item->tanggal_surat}}
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    {{ $item->keterangan }}
+                                </td>
+                                <td>
+                                    {{$item->tujuan}}
+                                </td>
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-success"

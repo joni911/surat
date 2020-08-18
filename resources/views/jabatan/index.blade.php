@@ -40,17 +40,10 @@
                                 {{ $item->hak_akses }}
                             </td>
                             <td>
-                                {{ $item->jabatan->jabatan }}
+
                             </td>
                             <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success"
-                                        href="{{ route('jabatan.edit', ['jabatan'=>$item->jabatan->id]) }}">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
-                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                
                                 </div>
                             </td>
                         </tr>

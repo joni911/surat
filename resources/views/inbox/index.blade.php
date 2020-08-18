@@ -19,8 +19,10 @@
                         <tr>
                             <th style="width: 20px">No</th>
                             <th>No Surat</th>
-                            <th>Tanggal</th>
+                            <th>Asal Surat</th>
                             <th>Prihal</th>
+                            <th>Tanggal Surat</th>
+                            <th>Tanggal Terima Surat</th>
                             <th>Keterangan </th>
                             <th>Tujuan</th>
                             <th>File</th>
@@ -35,14 +37,21 @@
                             <td>
                                 {{ $no }}
                             </td>
+
                             <td>
                                 {{ $item->no_surat }}
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ $item->prihal }}
                             </td>
                             <td>
                                 {{$item->tanggal_surat}}
                             </td>
                             <td>
-                                {{ $item->prihal }}
+
                             </td>
                             <td>
                                 {{ $item->keterangan }}

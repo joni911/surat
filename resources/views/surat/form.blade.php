@@ -16,9 +16,22 @@
             </div>
         </div>
     </div>
-
 </div>
 
+<div class="form-group">
+    <label for="">Asal Surat</label>
+    <div class="col-sm-10">
+        <input type="text"
+      class="form-control" name="asal" id="" aria-describedby="helpId" placeholder="">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="">No Surat</label>
+    <div class="col-sm-10">
+        <input type="text"
+      class="form-control" name="nomor_surat" id="" aria-describedby="helpId" placeholder="">
+    </div>
+  </div>
   <div class="form-group">
     <label for="">Prihal</label>
     <div class="col-sm-10">
@@ -26,12 +39,21 @@
       class="form-control" name="prihal" id="" aria-describedby="helpId" placeholder="">
     </div>
   </div>
+
   <div class="form-group">
-    <label for="">Tanggal Masuk</label>
+    <label for="">Tanggal Surat</label>
+    <div class="col-sm-10">
+      <input type="date"
+      class="form-control" name="tanggal_surat" id="" aria-describedby="helpId" placeholder="">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="">Tanggal Terima Surat</label>
     <div class="col-sm-10">
       <input type="date"
       class="form-control" name="tanggal_masuk" id="" aria-describedby="helpId" placeholder="">
     </div>
+  </div>
 <div class="form-group">
     <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
     <div class="col-sm-10">
