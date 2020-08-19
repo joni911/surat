@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNomorHpToUsersTable extends Migration
+class AddNoSuratToSuratsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddNomorHpToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('nomor_hp');
+        Schema::table('surats', function (Blueprint $table) {
+            $table->string('asal_surat');
+            $table->string('no_surat_input');
+            $table->date('tanggal_terima_surat');
+
         });
     }
 
@@ -25,7 +28,7 @@ class AddNomorHpToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('surats', function (Blueprint $table) {
             //
         });
     }

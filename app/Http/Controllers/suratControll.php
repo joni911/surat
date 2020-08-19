@@ -61,11 +61,14 @@ class suratControll extends Controller
             'file' => 'required',
             'prihal' => 'required',
             'keterangan'=> 'required',
-            'tanggal_masuk' => 'required'
+            'tanggal_surat' => 'required',
+            'asal_surat' =>'required',
+            'nomor_asli_surat'=> 'required',
+            'tanggal_terima_surat'=> 'required'
             ]);
             //isi id_user dengan id user yang login
             $nama = Auth::user();
-           
+
             // auto generate number
             $mytime = Carbon::now();
             $month = $mytime->month;
@@ -77,7 +80,7 @@ class suratControll extends Controller
             ;
             // echo $serial->serial;
             $year_check = 2020;
-            
+
             if ($year!=$year_check) {
                 surat_id::create([
                     'kode_id' => $request->no_surat,
@@ -114,7 +117,7 @@ class suratControll extends Controller
                     echo str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->kode_id.'/'.$no_surat->bulan.'/'.$no_surat->tahun;
                 }
             }
-           
+
 
             // $nama_file =  Storage::disk('s3')->url($path);
 
@@ -127,11 +130,14 @@ class suratControll extends Controller
             surat::create([
                 'user_id' =>$nama->id,
                 'no_surat' => str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->kode_id.'/'.$no_surat->bulan.'/'.$no_surat->tahun,
-                'tanggal_surat' => $request->tanggal_masuk,
+                'tanggal_surat' => $request->taggal_surat,
                 'tujuan' => $request->tujuan,
                 'prihal' => $request->prihal,
                 'file' => $nama_file,
                 'keterangan' => $request->keterangan,
+                'no_asal_surat' => $request->nomor_asli_surat,
+                'asal_surat' => $request->asal_surat,
+                'tanggal_terima_surat' => $request->tanggal_terima_surat
             ]);
             return redirect()->route("surat.index")->with(
             "success",

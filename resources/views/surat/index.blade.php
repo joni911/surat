@@ -54,12 +54,9 @@
                                <a href="/surat_storage/{{ $item->file }}">file</a>
                             </td>
                             <td>
-                                <a class="btn btn-warning"
+                                <a class="btn btn-success"
                                 href="{{ route('disposisi.edit', $item->id) }}">
-                                <i class="fas fa-paper-plane"></i>
-                                <a class="btn btn-warning"
-                                href="{{ route('disposisi.edit', $item->id) }}">
-                                <i class="fas fa-whatsapp"></i>
+                                <i class="fab fa-whatsapp"></i>
                             </a>
                             </td>
                             <td>
