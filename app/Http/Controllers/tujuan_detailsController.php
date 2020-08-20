@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\jabatan;
-use App\opsi_jabatan;
-use App\surat;
-use App\User;
+use App\tujuan_detail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Echo_;
 
-class jabatanControll extends Controller
+class tujuan_detailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +14,7 @@ class jabatanControll extends Controller
      */
     public function index()
     {
-        $data = opsi_jabatan::paginate(10);
-        $tampil = [];
-        $tampil['data'] =$data;
-
-        return view('jabatan.index', $tampil);
+        //
     }
 
     /**
@@ -33,8 +24,7 @@ class jabatanControll extends Controller
      */
     public function create()
     {
-
-        return view('jabatan.create');
+        //
     }
 
     /**
@@ -45,15 +35,7 @@ class jabatanControll extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'jabatan' => 'required',
-
-        ]);
-        $dataUser = opsi_jabatan::create($request->all());
-        return redirect()->route("jabatan.index")->with(
-            "success",
-            "Data berhasil disimpan."
-        );
+        //
     }
 
     /**
@@ -75,9 +57,7 @@ class jabatanControll extends Controller
      */
     public function edit($id)
     {
-        $data = opsi_jabatan::findOrFail($id);
-
-        return view('jabatan.edit',$data);
+        //
     }
 
     /**
@@ -89,14 +69,18 @@ class jabatanControll extends Controller
      */
     public function update(Request $request, $id)
     {
-            $data = opsi_jabatan::findOrFail($id);
-            $data->jabatan = $request->jabatan;
+        $this->validate($request, [
+            'jabatan' => 'required',
 
-            $data->save();
-            return redirect()->route("jabatan.index")->with(
+        ]);
+        $dataUser = tujuan_detail::create(
+           [ 'tujuan_id' => $id,
+               'jabatan_tujuan' => $request->jabatan]
+        );
+        return redirect()->route("tujuan.index")->with(
             "success",
-            "Data User berhasil diubah."
-            );
+            "Data berhasil disimpan."
+        );
     }
 
     /**
@@ -107,6 +91,7 @@ class jabatanControll extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = tujuan_detail::findOrFail($id);
+        $data->delete();
     }
 }

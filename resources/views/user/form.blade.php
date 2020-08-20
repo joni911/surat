@@ -12,9 +12,9 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Nomor HP</label>
+    <label for="name" class="col-sm-2 control-label">Nomor Whatsapp</label>
     <div class="col-sm-10">
-        <input type="text" name="nomor_hp" class="form-control" value="{{ $nomor_hp ?? '' }}">
+        <input type="text" name="no_wa" class="form-control" value="{{ $no_wa ?? '' }}">
     </div>
 </div>
 <div class="form-group">
@@ -28,6 +28,7 @@
           </select>
     </div>
 </div>
+@include('user.jabatan')
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10 text-center">
         <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">

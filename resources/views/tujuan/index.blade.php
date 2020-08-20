@@ -9,8 +9,8 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-header">
-                <a class="btn btn-primary btn-md" href="{{ route('jabatan.create') }}">
-                    <i class="fa fa-plus"></i> Tambah Jabatan
+                <a class="btn btn-primary btn-md" href="{{ route('tujuan.create') }}">
+                    <i class="fa fa-plus"></i> Tambah Tujuan
                 </a>
 
             </div>
@@ -21,6 +21,7 @@
                         <tr>
                             <th style="width: 20px">No</th>
                             <th>Nama Jabatan</th>
+                            <th>Tujuan</th>
                             <th style="width: 80px">Aksi</th>
                         </tr>
                     </thead>
@@ -32,12 +33,17 @@
                                 {{ $no }}
                             </td>
                             <td>
-                                {{ $item->jabatan}}
+                                {{ $item->nama_tujuan}}
+                            </td>
+                            <td>
+                                @foreach ($item->tujuan_detail as $detail)
+                                    {{$detail->jabatan_tujuan}},
+                                @endforeach
                             </td>
                             <td>
                                 <a class="btn btn-success"
-                                href="{{ route('jabatan.edit', $item->id) }}">
-                                <i class="fas fa-edit"></i>
+                                href="{{ route('tujuan.show', $item->id) }}">
+                                <i class="fas fa-plus"></i>
                             </td>
                         </tr>
                         <?php $no++;?>

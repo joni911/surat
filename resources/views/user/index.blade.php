@@ -19,9 +19,9 @@
                         <tr>
                             <th style="width: 20px">No</th>
                             <th>Nama</th>
-                            <th>Hak Akses</th>
+                            <th>Jabatan</th>
                             <th>Email</th>
-                            <th>No HP</th>
+                            <th>No Whatsapp</th>
                             <th style="width: 80px">Aksi</th>
                         </tr>
                     </thead>
@@ -36,12 +36,12 @@
                                 {{ $item->name }}
                             </td>
                             <td>
-                                {{ $item->hak_akses }}
+                                {{ $item->jabatan->jabatan }}
                             </td>
                             <td>
                                 {{ $item->email }}
                             </td>
-                            <td>{{ $item->nomor_hp }}</td>
+                            <td>{{ $item->no_wa }}</td>
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-success"

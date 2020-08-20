@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTanggalMasukToSuratsTable extends Migration
+class CreateTujuansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddTanggalMasukToSuratsTable extends Migration
      */
     public function up()
     {
-        Schema::table('surats', function (Blueprint $table) {
-            $table->date('tanggal_surat');
+        Schema::create('tujuans', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_tujuan');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddTanggalMasukToSuratsTable extends Migration
      */
     public function down()
     {
-        Schema::table('surats', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('tujuans');
     }
 }

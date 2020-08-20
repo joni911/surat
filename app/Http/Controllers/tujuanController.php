@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App\jabatan;
 use App\opsi_jabatan;
-use App\surat;
-use App\User;
+use App\tujuan;
+use App\tujuan_detail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Echo_;
 
-class jabatanControll extends Controller
+class tujuanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +17,10 @@ class jabatanControll extends Controller
      */
     public function index()
     {
-        $data = opsi_jabatan::paginate(10);
+        $data = tujuan::paginate(10);
         $tampil = [];
-        $tampil['data'] =$data;
-
-        return view('jabatan.index', $tampil);
+        $tampil['data'] = $data;
+        return view('tujuan.index',$tampil);
     }
 
     /**
@@ -33,8 +30,8 @@ class jabatanControll extends Controller
      */
     public function create()
     {
-
-        return view('jabatan.create');
+        $data = opsi_jabatan::all();
+        return view('tujuan.create',['jabatan' =>$data]);
     }
 
     /**
@@ -49,8 +46,10 @@ class jabatanControll extends Controller
             'jabatan' => 'required',
 
         ]);
-        $dataUser = opsi_jabatan::create($request->all());
-        return redirect()->route("jabatan.index")->with(
+        $dataUser = tujuan::create(
+           [ 'nama_tujuan' => $request->jabatan]
+        );
+        return redirect()->route("tujuan.index")->with(
             "success",
             "Data berhasil disimpan."
         );
@@ -64,8 +63,13 @@ class jabatanControll extends Controller
      */
     public function show($id)
     {
-        //
+        $data = tujuan::findOrFail($id);
+        $jabatan = opsi_jabatan::get();
+        $tujuan_details = tujuan_detail::where('tujuan_id',$id)
+        ->get();
+        return view('tujuan.add',$data,['jabatan'=>$jabatan,'tujuan_detail'=>$tujuan_details]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -75,9 +79,9 @@ class jabatanControll extends Controller
      */
     public function edit($id)
     {
-        $data = opsi_jabatan::findOrFail($id);
-
-        return view('jabatan.edit',$data);
+        $data = tujuan::findOrFail($id);
+        $jabatan = opsi_jabatan::get();
+        return view('tujuan.add',$data,['jabatan'=>$jabatan]);
     }
 
     /**
@@ -89,14 +93,7 @@ class jabatanControll extends Controller
      */
     public function update(Request $request, $id)
     {
-            $data = opsi_jabatan::findOrFail($id);
-            $data->jabatan = $request->jabatan;
-
-            $data->save();
-            return redirect()->route("jabatan.index")->with(
-            "success",
-            "Data User berhasil diubah."
-            );
+        //
     }
 
     /**

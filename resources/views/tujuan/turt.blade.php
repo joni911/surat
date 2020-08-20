@@ -1,26 +1,27 @@
 @extends('adminlte::page')
-@section('title', 'jabatan')
+@section('title', 'Petugas')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Jabatan</h1>
+<h1 class="m-0 text-dark">Manajemen Petugas</h1>
 @stop
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-header">
-                <a class="btn btn-primary btn-md" href="{{ route('jabatan.create') }}">
-                    <i class="fa fa-plus"></i> Tambah Jabatan
+                <a class="btn btn-primary btn-md" href="{{ route('petugas.create') }}">
+                    <i class="fa fa-plus"></i> Tambah
                 </a>
-
-            </div>
+                <a class="btn btn-primary btn-md" href="{{ route('petugas.turt') }}">
+                    <i class="fa fa-plus"></i> Staff Turt
+                </a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th style="width: 20px">No</th>
-                            <th>Nama Jabatan</th>
+                            <th style="width: 20px">#</th>
+                            <th>Nama</th>
+                            <th>Email</th>
                             <th style="width: 80px">Aksi</th>
                         </tr>
                     </thead>
@@ -32,18 +33,27 @@
                                 {{ $no }}
                             </td>
                             <td>
-                                {{ $item->jabatan}}
+                                {{ $item->name }}
                             </td>
                             <td>
-                                <a class="btn btn-success"
-                                href="{{ route('jabatan.edit', $item->id) }}">
-                                <i class="fas fa-edit"></i>
+                                {{ $item->email }}
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-success"
+                                        href="{{ route('petugas.edit', ['petuga'=>$item->id]) }}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         <?php $no++;?>
                         @empty
                         <tr>
-                            <td colspan="5">
+                            <td colspan="4">29
                                 Tidak ada data.
                             </td>
                         </tr>
@@ -81,13 +91,13 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#dd3333',
+            30
             confirmButtonText: 'Hapus',
             cancelButtonText: 'Batal',
         }).then((result) => {
             if (result.value) {
-                39
                 $.ajax({
-                    url: "/user/" + id,
+                    url: "/petugas/" + id,
                     type: 'DELETE',
                     data: {
                         '_token': $('meta[name=csrf-token]').attr("content"),

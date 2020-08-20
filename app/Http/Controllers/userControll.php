@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\jabatan;
+use App\opsi_jabatan;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +29,8 @@ class userControll extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $data = opsi_jabatan::all();
+        return view('user.create',['jabatan' =>$data]);
     }
 
     /**
@@ -41,6 +44,8 @@ class userControll extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'no_wa'=> 'required|unique:users',
+            'jabatan' => 'required',
         ]);
 
         //enkripsi password
@@ -52,7 +57,11 @@ class userControll extends Controller
         $dataUser = User::create(
             $request->all()
         );
-        
+        $jabatan = User::where('email',$request->email)->first();
+        $dataJabatan = jabatan::create([
+            'user_id' => $jabatan->id,
+            'jabatan' => $request->jabatan
+        ]);
         return redirect()->route("user.index")->with(
             "success",
             "Data berhasil disimpan."
@@ -79,8 +88,8 @@ class userControll extends Controller
     public function edit($id)
     {
         $data = User::findOrFail($id);
-
-        return view('user.edit',$data);
+        $jabatan = opsi_jabatan::all();
+        return view('user.edit', $data,['jabatan' => $jabatan]);
     }
 
     /**
@@ -95,14 +104,19 @@ class userControll extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
+            'no_wa'=> 'required',
             ]);
             $data = User::findOrFail($id);
             $data->name = $request->name;
             $data->email = $request->email;
             $data->hak_akses = $request->hak_akses;
-            $data->nomor_hp = $request->nomor_hp;
+            $data->no_wa = $request->no_wa;
             //jika password tidak kosong
             $data->save();
+
+            $jabatan = jabatan::where('user_id',$id)->first();
+            $jabatan->jabatan = $request->jabatan;
+            $jabatan->save();
             return redirect()->route("user.index")->with(
             "success",
             "Data User berhasil diubah."

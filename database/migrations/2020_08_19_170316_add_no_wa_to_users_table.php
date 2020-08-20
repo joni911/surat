@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaporanHarianTotalsTable extends Migration
+class AddNoWaToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateLaporanHarianTotalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('laporan_harian_totals', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('no_wa');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateLaporanHarianTotalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laporan_harian_totals');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

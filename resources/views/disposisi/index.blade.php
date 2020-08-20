@@ -38,7 +38,7 @@
                                 <th>Keterangan </th>
                                 <th>Tujuan</th>
                                 <th>File</th>
-                                <th>Kirim</th>
+                          
 
                             </tr>
                         </thead>
@@ -54,7 +54,7 @@
                                     {{ $item->no_surat }}
                                 </td>
                                 <td>
-
+                                    {{$item->asal_surat}}
                                 </td>
                                 <td>
                                     {{ $item->prihal }}
@@ -63,7 +63,7 @@
                                     {{$item->tanggal_surat}}
                                 </td>
                                 <td>
-
+                                    {{$item->tanggal_terima_surat}}
                                 </td>
                                 <td>
                                     {{ $item->keterangan }}

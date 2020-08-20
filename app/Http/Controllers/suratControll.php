@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\surat;
 use App\surat_id;
 use App\suratcode;
+use App\tujuan;
+use App\tujuan_detail;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +42,10 @@ class suratControll extends Controller
         $kode = suratcode::get();
         $tampil = [];
         $tampil['data'] = $kode;
-       return view('surat.create',['data' => $data,'kode' =>$tampil['data']]);
+        $id = $data->jabatan->jabatan;
+        $t = tujuan::where('nama_tujuan',$id)->first();
+        $tujuan = tujuan_detail::where('tujuan_id',$t->id)->get();
+       return view('surat.create',['data' => $data,'kode' =>$tampil['data'],'tujuan' =>$tujuan]);
     }
 
     /**
@@ -130,7 +135,7 @@ class suratControll extends Controller
             surat::create([
                 'user_id' =>$nama->id,
                 'no_surat' => str_pad($no_surat->serial,5,0,STR_PAD_LEFT).'/'.$no_surat->kode_id.'/'.$no_surat->bulan.'/'.$no_surat->tahun,
-                'tanggal_surat' => $request->taggal_surat,
+                'tanggal_surat' => $request->tanggal_surat,
                 'tujuan' => $request->tujuan,
                 'prihal' => $request->prihal,
                 'file' => $nama_file,
@@ -153,7 +158,12 @@ class suratControll extends Controller
      */
     public function show($id)
     {
-        //
+        $data = surat::findOrFail($id);
+        $user = Auth::user();
+        //echo $data->name." Jabatan : ".$data->jabatan->jabatan;
+
+
+       return view('surat.wa',$data,['user' => $user]);
     }
 
     /**

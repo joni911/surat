@@ -1,7 +1,7 @@
 @extends('adminlte::page')
-@section('title', 'Jabatan')
+@section('title', 'Surat')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Jabatan</h1>
+<h1 class="m-0 text-dark">Manajemen Surat</h1>
 @stop
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
         @if ($errors->any())
         <div class="alert alert-warning alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="icon fa fa-warning"></i> Perhatian!</h4>33
+            <h4><i class="icon fa fa-warning"></i> Perhatian!</h4>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -22,9 +22,9 @@
                 Ubah Petugas
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('jabatan.update', ['jabatan' => $id]) }}" method="post">
+                <form class="form-horizontal" action="{{ route('surat.update', ['surat' => $id]) }}" enctype="multipart/form-data" method="post">
                     @method('PUT')
-                    @include('jabatan.form')
+                    @include('surat.send')
                 </form>
             </div>
         </div>

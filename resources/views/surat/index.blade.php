@@ -19,13 +19,15 @@
                         <tr>
                             <th style="width: 20px">No</th>
                             <th>No Surat</th>
-                            <th>Tanggal</th>
+                            <th>Asal Surat</th>
                             <th>Prihal</th>
+                            <th>Tanggal Surat</th>
+                            <th>Tanggal Terima Surat</th>
                             <th>Keterangan </th>
                             <th>Tujuan</th>
                             <th>File</th>
                             <th>Kirim</th>
-                            <th style="width: 80px">Aksi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,10 +41,16 @@
                                 {{ $item->no_surat }}
                             </td>
                             <td>
+                                {{$item->asal_surat}}
+                            </td>
+                            <td>
+                                {{$item->prihal}}
+                            </td>
+                            <td>
                                 {{$item->tanggal_surat}}
                             </td>
                             <td>
-                                {{ $item->prihal }}
+                                {{$item->tanggal_terima_surat}}
                             </td>
                             <td>
                                 {{ $item->keterangan }}
@@ -55,18 +63,19 @@
                             </td>
                             <td>
                                 <a class="btn btn-success"
-                                href="{{ route('disposisi.edit', $item->id) }}">
+                                href="{{ route('surat.show', ['surat'=>$item->id]) }}">
                                 <i class="fab fa-whatsapp"></i>
+                            </a>
                             </a>
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-success"
+                                    <a class="btn btn-primary"
                                         href="{{ route('surat.edit', ['surat'=>$item->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
 
-                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
+                                    <a class="btn btn-danger" onclick="hapus('{{ $item->id }}')" href="#">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>

@@ -65,6 +65,11 @@ class AppServiceProvider extends ServiceProvider {
                                 'text' => 'Jabatan',
                                 'url' => 'jabatan',
                                 'icon' => 'fas fa-fw fa-briefcase'
+                            ],
+                            [
+                                'text' => 'Tujuan',
+                                'url' => 'tujuan',
+                                'icon' => 'fas fa-fw fa-briefcase'
                             ]
                         );
                         break;

@@ -23,6 +23,7 @@
           <input type="password" class="form-control" name="password_confirmation" id="" placeholder="">
       </div>
   </div>
+  
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
         <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">

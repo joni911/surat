@@ -37,12 +37,10 @@
                             <td>
                                 {{ $no }}
                             </td>
-
                             <td>
                                 {{ $item->no_surat }}
-                            </td>
                             <td>
-
+                                {{$item->prihal}}
                             </td>
                             <td>
                                 {{ $item->prihal }}
@@ -51,7 +49,7 @@
                                 {{$item->tanggal_surat}}
                             </td>
                             <td>
-
+                                {{$item->tanggal_terima_surat}}
                             </td>
                             <td>
                                 {{ $item->keterangan }}
