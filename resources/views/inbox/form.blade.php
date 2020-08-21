@@ -66,7 +66,7 @@
       <input type="text"
         class="form-control" name="user" value="{{$tampil->name}}" hidden id="" aria-describedby="helpId" placeholder="">
     </div>
-    @include('inbox.switch')
+    @include('inbox.tujuan')
     <div class="form-group">
       <label for="">Kajian</label>
         <div class="col-sm-11">

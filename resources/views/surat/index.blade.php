@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th style="width: 20px">No</th>
+                            <th>No Agenda</th>
                             <th>No Surat</th>
                             <th>Asal Surat</th>
                             <th>Prihal</th>
@@ -39,6 +40,9 @@
                             </td>
                             <td>
                                 {{ $item->no_surat }}
+                            </td>
+                            <td>
+                                {{$item->no_asal_surat}}
                             </td>
                             <td>
                                 {{$item->asal_surat}}

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\disposisi;
 use App\surat;
+use App\tujuan;
+use App\tujuan_detail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,8 +71,12 @@ class masukControll extends Controller
         $tampil['data'] = Auth::user();
         $disposisi = [];
         $disposisi['data'] = disposisi::where('surat_id',$id)->get();
+        $user = Auth::user();
+        $id = $user->jabatan->jabatan;
+        $t = tujuan::where('nama_tujuan',$id)->first();
+        $tujuan = tujuan_detail::where('tujuan_id',$t->id)->get();
       // echo $tampil['data'];
-        return view('inbox.edit',['surat' => $data,'tampil'=>$tampil['data'],'disposisi'=>$disposisi['data']]);
+        return view('inbox.edit',['surat' => $data,'tampil'=>$tampil['data'],'disposisi'=>$disposisi['data'],'tujuan'=>$tujuan]);
     }
 
     /**
