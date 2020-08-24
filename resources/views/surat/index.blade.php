@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Surat')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Petugas</h1>
+<h1 class="m-0 text-dark">Manajemen Surat</h1>
 @stop
 @section('content')
 <div class="row">

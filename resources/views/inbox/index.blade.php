@@ -1,16 +1,14 @@
 @extends('adminlte::page')
 @section('title', 'Surat')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Petugas</h1>
+<h1 class="m-0 text-dark">Manajemen Surat Masuk</h1>
 @stop
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary btn-md" href="{{ route('surat.create') }}">
-                    <i class="fa fa-plus"></i> Tambah
-                </a>
+
 
             </div>
             <div class="card-body">

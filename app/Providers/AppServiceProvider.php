@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider {
                             'icon' => 'fas fa-fw fa-file'
                             ],
                             [
-                                'text' => 'Surat Masuk',
+                                'text' => 'Kotak Masuk',
                                 'url' => 'inbox',
                                 'icon' => 'fas fa-fw fa-inbox'
                             ],
@@ -83,7 +83,7 @@ class AppServiceProvider extends ServiceProvider {
                             'icon' => 'fas fa-fw fa-file'
                             ],
                             [
-                                'text' => 'Surat Masuk',
+                                'text' => 'Kotak Masuk',
                                 'url' => 'inbox',
                                 'icon' => 'fas fa-fw fa-inbox'
                             ],
@@ -110,7 +110,7 @@ class AppServiceProvider extends ServiceProvider {
                             'icon' => 'fas fa-fw fa-file'
                             ],
                             [
-                                'text' => 'Surat Masuk',
+                                'text' => 'Kotak Masuk',
                                 'url' => 'inbox',
                                 'icon' => 'fas fa-fw fa-inbox'
                             ],
