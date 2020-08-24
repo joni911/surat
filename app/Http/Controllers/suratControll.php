@@ -79,13 +79,12 @@ class suratControll extends Controller
             $month = $mytime->month;
             $year =$mytime->year;
 
-            $serial = surat_id::where('kode_id',$request->no_surat)
-            ->orderBy('created_at','desc')
+            $serial = surat_id::orderBy('created_at','desc')
             ->first()
             ;
             // echo $serial->serial;
             $year_check = 2020;
-
+            echo $serial;
             if ($year!=$year_check) {
                 surat_id::create([
                     'kode_id' => $request->no_surat,
@@ -163,7 +162,11 @@ class suratControll extends Controller
         //echo $data->name." Jabatan : ".$data->jabatan->jabatan;
 
 
-       return view('surat.wa',$data,['user' => $user]);
+        $jabatan = jabatan::where('jabatan',$data->tujuan)->first();
+
+        $no_wa = User::findorFail($jabatan->user_id);
+
+         return view('surat.wa',$data,['user' => $user,'no_wa'=> $no_wa]);
     }
 
     /**

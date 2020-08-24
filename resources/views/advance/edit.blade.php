@@ -23,7 +23,7 @@
             </div>
             <div class="card-body">
 
-                <form class="form-horizontal" action="{{ route('inbox.update', [$surat->id]) }}" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="{{ route('inbox.update', [$surat->id]) }}" method="post">
                     @method('PUT')
                     @include('inbox.form')
                 </form>

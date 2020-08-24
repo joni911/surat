@@ -100,21 +100,34 @@ class masukControll extends Controller
             $mytime = Carbon::now();
             $jam = $mytime->toTimeString();
             $tanggal =$mytime->toDateString();
+
+            $file = $request->file('file_disposisi');
+
+            $nama_file = $data->no_surat."-".$mytime->toDateString().".".$file->extension();
+
+            $tujuan_upload = 'disposisi_storage';
+            $file->move($tujuan_upload,$nama_file);
+
             disposisi::create([
                 'surat_id' => $data->id,
                 'user' => $request->user,
                 'tujuan' => $request->tujuan,
                 'kajian' => $request->kajian,
                 'tanggal_kajian' => $tanggal,
-                'jam_kajian' => $jam
+                'jam_kajian' => $jam,
+                'disposisi' => $request->disposisi,
+                'file_disposisi' => $file
             ]);
 
-            return redirect()->route("inbox.index")->with(
+            return redirect()->route("disposisi.edit",$id)->with(
                 "success",
                 "Data berhasil dikirim ke ".$request->tujuan
                 );
     }
-
+    public function wa()
+    {
+        echo 'wa';
+    }
     /**
      * Remove the specified resource from storage.
      *

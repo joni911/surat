@@ -12,7 +12,9 @@ class disposisi extends Model
         'tujuan',
         'kajian',
         'tanggal_kajian',
-        'jam_kajian'
+        'jam_kajian',
+        'disposisi',
+        'file_disposisi'
     ];
 
     public function surat()

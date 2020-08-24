@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\disposisi;
+use App\jabatan;
 use App\surat;
 use App\User;
 use Carbon\Carbon;
@@ -68,9 +69,18 @@ class disposisiControll extends Controller
     public function edit($id)
     {
         $data = surat::findOrFail($id);
-        $tampil =[];
-        $tampil['data'] = Auth::user();
-        return view('disposisi.edit',$data,$tampil);
+        $user = Auth::user();
+        //echo $data->name." Jabatan : ".$data->jabatan->jabatan;
+
+
+        $jabatan = jabatan::where('jabatan',$data->tujuan)->first();
+
+        $no_wa = User::findorFail($jabatan->user_id);
+
+        $kajian = disposisi::where('surat_id',$id)->orderBy('created_at','desc')
+        ->first();
+
+         return view('disposisi.wa',$data,['user' => $user,'no_wa'=> $no_wa,'kajian'=>$kajian]);
     }
 
     /**

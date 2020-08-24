@@ -8,9 +8,8 @@
                     <th>Tanggal</th>
                     <th>Pembuat Kajian</th>
                     <th>Tujuan</th>
-                    <th>Disposisi</th>
-                    <th>File Disposisi</th>
                     <th>Kajian</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -30,12 +29,6 @@
                     <td>{{ $item->user}}</td>
                     <td>
                         {{$item->tujuan}}
-                    </td>
-                    <td>
-                        {{$item->disposisi}}
-                    </td>
-                    <td>
-                        {{$item->file_disposisi}}
                     </td>
                     <td>
                         {{ $item->kajian }}

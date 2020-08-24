@@ -39,6 +39,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::resource('expedisi', 'expedisiControll');
     Route::resource('profile', 'profileControll');
     Route::resource('user', 'userControll');
+    Route::resource('advance', 'advancedisposisiControll');
     Route::resource('jabatan', 'jabatanControll');
     Route::resource('disposisi', 'disposisiControll');
     Route::resource('tujuan', 'tujuanController');
