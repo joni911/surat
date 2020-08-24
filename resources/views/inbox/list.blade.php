@@ -35,7 +35,7 @@
                         {{$item->disposisi}}
                     </td>
                     <td>
-                        {{$item->file_disposisi}}
+                        <a href="/disposisi_storage/{{$item->file_disposisi}}">Link</a>
                     </td>
                     <td>
                         {{ $item->kajian }}

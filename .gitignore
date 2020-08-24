@@ -1,5 +1,7 @@
 /node_modules
 /public/hot
+/public/disposisi_storage
+/public/surat_storage
 /public/storage
 /storage/*.key
 /vendor

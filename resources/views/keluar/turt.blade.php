@@ -1,37 +1,28 @@
 @extends('adminlte::page')
-@section('title', 'Surat')
+@section('title', 'Petugas')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Surat</h1>
+<h1 class="m-0 text-dark">Manajemen Petugas</h1>
 @stop
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary btn-md" href="{{ route('surat.create') }}">
-                    <i class="fa fa-inbox"></i> Tambah Surat Masuk
+                <a class="btn btn-primary btn-md" href="{{ route('petugas.create') }}">
+                    <i class="fa fa-plus"></i> Tambah
                 </a>
-                <a class="btn btn-primary btn-md" href="{{ route('keluar.create') }}">
-                    <i class="fas fa-sign-out-alt"></i> Tambah Surat Keluar
-
+                <a class="btn btn-primary btn-md" href="{{ route('petugas.turt') }}">
+                    <i class="fa fa-plus"></i> Staff Turt
                 </a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th style="width: 20px">No</th>
-                            <th>No Agenda</th>
-                            <th>No Surat</th>
-                            <th>Asal Surat</th>
-                            <th>Prihal</th>
-                            <th>Tanggal Surat</th>
-                            <th>Tanggal Terima Surat</th>
-                            <th>Keterangan </th>
-                            <th>Tujuan</th>
-                            <th>File</th>
-                            <th>Kirim</th>
-                            <th>Aksi</th>
+                            <th style="width: 20px">#</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th style="width: 80px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,57 +33,27 @@
                                 {{ $no }}
                             </td>
                             <td>
-                                {{ $item->no_surat }}
+                                {{ $item->name }}
                             </td>
                             <td>
-                                {{$item->no_asal_surat}}
-                            </td>
-                            <td>
-                                {{$item->asal_surat}}
-                            </td>
-                            <td>
-                                {{$item->prihal}}
-                            </td>
-                            <td>
-                                {{$item->tanggal_surat}}
-                            </td>
-                            <td>
-                                {{$item->tanggal_terima_surat}}
-                            </td>
-                            <td>
-                                {{ $item->keterangan }}
-                            </td>
-                            <td>
-                                {{$item->tujuan}}
-                            </td>
-                            <td>
-                               <a href="/surat_storage/{{ $item->file }}">file</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-success"
-                                href="{{ route('surat.show', ['surat'=>$item->id]) }}">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            </a>
+                                {{ $item->email }}
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-primary"
-                                        href="{{ route('surat.edit', ['surat'=>$item->id]) }}">
+                                    <a class="btn btn-success"
+                                        href="{{ route('petugas.edit', ['petuga'=>$item->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-
-                                    <a class="btn btn-danger" onclick="hapus('{{ $item->id }}')" href="#">
+                                    <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                             </td>
-
                         </tr>
                         <?php $no++;?>
                         @empty
                         <tr>
-                            <td colspan="4">
+                            <td colspan="4">29
                                 Tidak ada data.
                             </td>
                         </tr>
@@ -130,13 +91,13 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#dd3333',
+            30
             confirmButtonText: 'Hapus',
             cancelButtonText: 'Batal',
         }).then((result) => {
             if (result.value) {
-                39
                 $.ajax({
-                    url: "/surat/" + id,
+                    url: "/petugas/" + id,
                     type: 'DELETE',
                     data: {
                         '_token': $('meta[name=csrf-token]').attr("content"),

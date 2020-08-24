@@ -100,10 +100,11 @@ class masukControll extends Controller
             $mytime = Carbon::now();
             $jam = $mytime->toTimeString();
             $tanggal =$mytime->toDateString();
-
+            echo $data->no_surat;
             $file = $request->file('file_disposisi');
-
-            $nama_file = $data->no_surat."-".$mytime->toDateString().".".$file->extension();
+            $user = Auth::user();
+            $nama_file = 'Disposisi-'.$user->name.'-'
+            .$tanggal.'.'.$file->extension();
 
             $tujuan_upload = 'disposisi_storage';
             $file->move($tujuan_upload,$nama_file);
@@ -116,7 +117,7 @@ class masukControll extends Controller
                 'tanggal_kajian' => $tanggal,
                 'jam_kajian' => $jam,
                 'disposisi' => $request->disposisi,
-                'file_disposisi' => $file
+                'file_disposisi' => $nama_file
             ]);
 
             return redirect()->route("disposisi.edit",$id)->with(

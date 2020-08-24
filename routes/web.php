@@ -34,6 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('surat', 'suratControll');
+    Route::resource('keluar', 'suratkeluarControll');
     Route::resource('suratcode', 'suratcodeControll');
     Route::resource('inbox', 'masukControll');
     Route::resource('expedisi', 'expedisiControll');

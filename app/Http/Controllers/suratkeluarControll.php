@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\suratcode;
+use App\tujuan;
+use App\tujuan_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class suratkeluarControlll extends Controller
+class suratkeluarControll extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +27,14 @@ class suratkeluarControlll extends Controller
      */
     public function create()
     {
-        //
+        $data = Auth::user();
+        $kode = suratcode::get();
+        $tampil = [];
+        $tampil['data'] = $kode;
+        $id = $data->jabatan->jabatan;
+        $t = tujuan::where('nama_tujuan',$id)->first();
+        $tujuan = tujuan_detail::where('tujuan_id',$t->id)->get();
+       return view('keluar.create',['data' => $data,'kode' =>$tampil['data'],'tujuan' =>$tujuan]);
     }
 
     /**
