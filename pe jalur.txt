@@ -1,4 +1,7 @@
 PENGADUAN NASABAH DITAMBAHKAN
-nama jsurat langsung ke pe jalurnya
+menu baru
+Manu search baru
+nama surat langsung ke pe jalurnya
 nama jabatan
-BUGS DISPOSISI BUGS SELESAI 
+BUGS DISPOSISI ketika no wa kosong BUGS SELESAI selesai belum ade tampilan atau penempatan menambah submenu baru 
+
