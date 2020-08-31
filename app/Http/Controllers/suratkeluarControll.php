@@ -56,9 +56,7 @@ class suratkeluarControll extends Controller
             'prihal' => 'required',
             'keterangan'=> 'required',
             'tanggal_surat' => 'required',
-            'asal_surat' =>'required',
-            'nomor_asli_surat'=> 'required',
-            'tanggal_terima_surat'=> 'required'
+
             ]);
             //isi id_user dengan id user yang login
             $nama = Auth::user();
@@ -128,9 +126,6 @@ class suratkeluarControll extends Controller
                 'prihal' => $request->prihal,
                 'file' => $nama_file,
                 'keterangan' => $request->keterangan,
-                'no_asal_surat' => $request->nomor_asli_surat,
-
-                'tanggal_terima_surat' => $request->tanggal_terima_surat
             ]);
             return redirect()->route("surat.index")->with(
             "success",
