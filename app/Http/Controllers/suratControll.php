@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\jabatan;
+use App\keluar;
 use Illuminate\Http\Request;
 use App\surat;
 use App\surat_id;
@@ -28,7 +29,10 @@ class suratControll extends Controller
        $tampil['data'] = surat::where('user_id',$data->id)
        ->OrderBy('created_at','desc')
        ->paginate(10);
-        return view('surat.index',$tampil);
+        $keluar['data'] = keluar::where('user_id',$data->id)
+        ->OrderBy('created_at','desc')
+       ->paginate(10);
+        return view('surat.index',['data'=>$tampil['data'], 'keluar' =>$keluar['data']]);
     }
 
     /**

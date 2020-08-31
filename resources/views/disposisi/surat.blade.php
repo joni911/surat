@@ -1,4 +1,3 @@
-{{ csrf_field() }}
 <div class="container">
     <div class="row">
         <div class="col">
@@ -55,43 +54,3 @@
         </div>
     </div>
 </div>
-<div class="container">
-   <div class="text-center">
-        <h2>Kajian</h2>
-   </div>
-</div>
-@include('inbox.list')
-<div class="container">
-    <div class="form-group">
-      <input type="text"
-        class="form-control" name="user" value="{{$tampil->name}}" hidden id="" aria-describedby="helpId" placeholder="">
-    </div>
-    @include('inbox.tujuan')
-    <div class="form-group">
-        <label for="">Disposisi</label>
-          <div class="col-sm-11">
-              <textarea class="form-control" name="disposisi" id="" rows="3"></textarea>
-          </div>
-      </div>
-
-    <div class="form-group">
-        <div class="col-sm-11">
-      <label for="">Kajian</label>
-        <div class="col-sm-11">
-            <textarea class="form-control" name="kajian" id="" rows="3"></textarea>
-        </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="">File Pendukung</label>
-        <input type="file" class="form-control-file" name="file_disposisi" id="" placeholder="" aria-describedby="fileHelpId">
-      </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">
-        <a name="" id="" class="btn btn-primary" href="{{route('advance.index')}}" role="button">Tambah Disposisi</a>
-
-    </div>
-</div>
-

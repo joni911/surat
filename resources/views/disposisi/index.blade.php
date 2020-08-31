@@ -38,7 +38,7 @@
                                 <th>Keterangan </th>
                                 <th>Tujuan</th>
                                 <th>File</th>
-                          
+
 
                             </tr>
                         </thead>

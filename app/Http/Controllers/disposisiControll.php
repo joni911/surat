@@ -56,7 +56,8 @@ class disposisiControll extends Controller
     {
         $data = disposisi::where('surat_id',$id)->paginate(10);
         $tampil['data'] = $data;
-        return view('disposisi.list',$tampil);
+        $surat = surat::findorfail($id);
+        return view('disposisi.list',$tampil,['surat' => $surat]);
 
     }
 
