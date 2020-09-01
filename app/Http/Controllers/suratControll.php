@@ -131,7 +131,7 @@ class suratControll extends Controller
 
             $file = $request->file('file');
 
-            $nama_file = $request->no_surat."-".$request->tanggal_terima_surat.".".$file->extension();
+            $nama_file = $request->no_surat."-".$new_serial.".".$file->extension();
 
             $tujuan_upload = 'surat_storage';
             $file->move($tujuan_upload,$nama_file);
@@ -189,10 +189,10 @@ class suratControll extends Controller
         $tampil['data'] = $kode;
         $id = $user->jabatan->jabatan;
         $t = tujuan::where('nama_tujuan',$id)->first();
-        echo $t;
-        $tujuan['data'] = tujuan_detail::where('tujuan_id',$t->id)->get();
-
-       return view('surat.edit',$data,['user' => $user,'kode' =>$tampil['data'],'tujuan' =>$tujuan['data']]);
+        $tujuan = tujuan_detail::where('tujuan_id',$t->id)->get();
+        $x = [];
+        $x['data'] = $tujuan;
+       return view('surat.edit',$data,['user' => $user,'kode' =>$tampil['data'],'x' =>$x['data']]);
     }
 
     /**
@@ -205,27 +205,32 @@ class suratControll extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-                'prihal' => 'required',
-                'keterangan'=> 'required',
-                'tanggal_masuk' => 'required'
+            'no_surat' => 'required',
+            'prihal' => 'required',
+            'keterangan'=> 'required',
+            'tanggal_surat' => 'required',
+            'asal_surat' =>'required',
+            'nomor_asli_surat'=> 'required',
+            'tanggal_terima_surat'=> 'required'
             ]);
             $data = surat::findOrFail($id);
+            $serial = surat_id::latest('created_at')->first();
             //jika password tidak kosong
             $file = $request->file('file');
             if ($file == null) {
                 $data->prihal = $request->prihal;
                 $data->keterangan = $request->keterangan;
-                $data->tanggal_surat = $request->tanggal_masuk;
+                $data->tanggal_surat = $request->tanggal_surat;
                 $data->tujuan= $request->tujuan;
                 $data->save();
             }else{
-                $nama_file = $request->no_surat."-".$request->tanggal_masuk.".".$file->extension();
+                $nama_file = $request->no_surat."-".$serial->serial."-".$request->tanggal_surat.".".$file->extension();
                 $tujuan_upload = 'surat_storage';
                 $file->move($tujuan_upload,$nama_file);
                 $data->prihal = $request->prihal;
                 $data->tujuan= $request->tujuan;
                 $data->keterangan = $request->keterangan;
-                $data->tanggal_surat = $request->tanggal_masuk;
+                $data->tanggal_surat = $request->tanggal_surat;
 
                 $data->file = $nama_file;
                 $data->save();

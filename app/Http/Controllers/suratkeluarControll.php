@@ -36,10 +36,8 @@ class suratkeluarControll extends Controller
         $kode = suratcode::get();
         $tampil = [];
         $tampil['data'] = $kode;
-        $id = $data->jabatan->jabatan;
-        $t = tujuan::where('nama_tujuan',$id)->first();
-        $tujuan = tujuan_detail::where('tujuan_id',$t->id)->get();
-       return view('keluar.create',['data' => $data,'kode' =>$tampil['data'],'tujuan' =>$tujuan]);
+
+       return view('keluar.create',['data' => $data,'kode' =>$tampil['data']]);
     }
 
     /**
@@ -55,12 +53,7 @@ class suratkeluarControll extends Controller
             'file' => 'required',
             'prihal' => 'required',
             'keterangan'=> 'required',
-            'tanggal_surat' => 'required',
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> 74c0199436b5c1fba05c2af5fa8fa2f292ab2547
+            'tanggal_surat' => 'required'
             ]);
             //isi id_user dengan id user yang login
             $nama = Auth::user();
@@ -128,11 +121,8 @@ class suratkeluarControll extends Controller
                 'tujuan' => $request->tujuan,
                 'prihal' => $request->prihal,
                 'file' => $nama_file,
-<<<<<<< HEAD
-                'keterangan' => $request->keterangan
-=======
                 'keterangan' => $request->keterangan,
->>>>>>> 74c0199436b5c1fba05c2af5fa8fa2f292ab2547
+                'tanggal_surat' => $request->tanggal_surat
             ]);
             return redirect()->route("surat.index")->with(
             "success",
@@ -166,7 +156,11 @@ class suratkeluarControll extends Controller
      */
     public function edit($id)
     {
-        //
+        $data =keluar::findOrFail($id);
+        $tampil =[];
+        $tampil['data'] = Auth::user();
+        $kode = suratcode::get();
+        return view('keluar.edit',$data,['kode' =>$kode]);
     }
 
     /**
@@ -178,7 +172,38 @@ class suratkeluarControll extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'tujuan' => 'required',
+            'prihal' => 'required',
+            'keterangan'=> 'required',
+            'tanggal_surat' => 'required'
+            ]);
+            $data = keluar::findOrFail($id);
+            //jika password tidak kosong
+            $file = $request->file('file');
+            if ($file == null) {
+                $data->prihal = $request->prihal;
+                $data->keterangan = $request->keterangan;
+                $data->tanggal_surat = $request->tanggal_surat;
+                $data->tujuan= $request->tujuan;
+                $data->save();
+            }else{
+                $nama_file = $request->no_surat."-".$request->tanggal_masuk.".".$file->extension();
+                $tujuan_upload = 'surat_storage';
+                $file->move($tujuan_upload,$nama_file);
+                $data->prihal = $request->prihal;
+                $data->tujuan= $request->tujuan;
+                $data->keterangan = $request->keterangan;
+                $data->tanggal_surat = $request->tanggal_masuk;
+
+                $data->file = $nama_file;
+                $data->save();
+            }
+
+            return redirect()->route("surat.index")->with(
+            "success",
+            "Data berhasil disimpan."
+            );
     }
 
     /**

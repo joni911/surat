@@ -22,9 +22,9 @@
                 Ubah Petugas
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('surat.update', ['surat' => $id]) }}" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="{{ route('keluar.update', ['keluar' => $id]) }}" enctype="multipart/form-data" method="post">
                     @method('PUT')
-                    @include('surat.form-edit')
+                    @include('keluar.form')
                 </form>
             </div>
         </div>

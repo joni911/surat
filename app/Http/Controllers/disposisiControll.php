@@ -74,6 +74,7 @@ class disposisiControll extends Controller
         //echo $data->name." Jabatan : ".$data->jabatan->jabatan;
 
 
+
         $jabatan = jabatan::where('jabatan',$data->tujuan)->first();
 
         $no_wa = User::findorFail($jabatan->user_id);

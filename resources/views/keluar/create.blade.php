@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Surat')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Surat</h1>
+<h1 class="m-0 text-dark">Manajemen Surat Keluar</h1>
 @stop
 @section('content')
 <div class="row">
@@ -19,7 +19,7 @@
         @endif
         <div class="card">
             <div class="card-header">
-                Tambah Surat
+                Tambah Surat Keluar
             </div>
             <div class="card-body">
                 <form class="form-horizontal" action="{{ route('keluar.store') }}"  enctype="multipart/form-data" method="post" >

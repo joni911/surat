@@ -7,31 +7,25 @@
         <div class="col-sm-5">
             <div class="form-group">
               <label for="">Kode Surat</label>
+              @if ($no_surat ?? '' !=null)
+                  <input type="text"
+                    class="form-control" name="no_surat" value="{{$no_surat ?? ''}}" disabled id="" aria-describedby="helpId" placeholder="">
+              @else
               <select class="form-control" name="no_surat" id="">
                 @foreach ($kode as $k)
                      <option value="{{$k->kode_surat}}">{{$k->kode_surat}} {{$k->keterangan}}</option>
                 @endforeach
               </select>
+              @endif
             </div>
         </div>
     </div>
 </div>
-
-<<<<<<< HEAD
-=======
-  <div class="form-group">
-    <label for="">No Surat</label>
-    <div class="col-sm-10">
-        <input type="text"
-      class="form-control" name="nomor_asli_surat" id="" aria-describedby="helpId" placeholder="">
-    </div>
-  </div>
->>>>>>> 74c0199436b5c1fba05c2af5fa8fa2f292ab2547
   <div class="form-group">
     <label for="">Prihal</label>
     <div class="col-sm-10">
         <input type="text"
-      class="form-control" name="prihal" id="" aria-describedby="helpId" placeholder="">
+      class="form-control" value="{{$prihal ?? ''}}" name="prihal" id="" aria-describedby="helpId" placeholder="">
     </div>
   </div>
 
@@ -39,17 +33,13 @@
     <label for="">Tanggal Surat</label>
     <div class="col-sm-10">
       <input type="date"
-      class="form-control" name="tanggal_surat" id="" aria-describedby="helpId" placeholder="">
+      class="form-control" value="{{$tanggal_surat ?? ''}}" name="tanggal_surat" id="" aria-describedby="helpId" placeholder="">
     </div>
   </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 74c0199436b5c1fba05c2af5fa8fa2f292ab2547
 <div class="form-group">
     <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
     <div class="col-sm-10">
-        <textarea name="keterangan" class="form-control" id="" cols="30" rows="10"></textarea>
+        <textarea name="keterangan" class="form-control" id="" cols="30" rows="10">{{$keterangan ?? ''}}</textarea>
     </div>
 </div>
 </div>

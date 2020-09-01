@@ -111,22 +111,30 @@ class masukControll extends Controller
                 }else{
                     $nama_file = '404';
                 }
-
+                $tujuan = $request->tujuan;
             disposisi::create([
                 'surat_id' => $data->id,
                 'user' => $request->user,
-                'tujuan' => $request->tujuan,
+                'tujuan' => $tujuan,
                 'kajian' => $request->kajian,
                 'tanggal_kajian' => $tanggal,
                 'jam_kajian' => $jam,
                 'disposisi' => $request->disposisi,
                 'file_disposisi' => $nama_file
             ]);
+            if ($tujuan != "ARSIP") {
+                return redirect()->route("disposisi.edit",$id)->with(
+                    "success",
+                    "Data berhasil dikirim ke ".$request->tujuan
+                    );
+            } else {
+                return redirect()->route("inbox.index")->with(
+                    "success",
+                    "Data berhasil dikirim ke ".$request->tujuan
+                    );
+            }
 
-            return redirect()->route("disposisi.edit",$id)->with(
-                "success",
-                "Data berhasil dikirim ke ".$request->tujuan
-                );
+
     }
     public function wa()
     {

@@ -4,11 +4,8 @@
             <tr>
                 <th style="width: 20px">No</th>
                 <th>No Agenda</th>
-                <th>No Surat</th>
-                <th>Asal Surat</th>
                 <th>Prihal</th>
                 <th>Tanggal Surat</th>
-                <th>Tanggal Terima Surat</th>
                 <th>Keterangan </th>
                 <th>Tujuan</th>
                 <th>File</th>
@@ -27,20 +24,12 @@
                     {{ $k->no_surat }}
                 </td>
                 <td>
-                    {{$k->no_asal_surat}}
-                </td>
-                <td>
-                    {{$k->asal_surat}}
-                </td>
-                <td>
                     {{$k->prihal}}
                 </td>
                 <td>
                     {{$k->tanggal_surat}}
                 </td>
-                <td>
-                    {{$k->tanggal_terima_surat}}
-                </td>
+
                 <td>
                     {{ $k->keterangan }}
                 </td>
