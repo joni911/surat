@@ -56,7 +56,11 @@ class suratkeluarControll extends Controller
             'prihal' => 'required',
             'keterangan'=> 'required',
             'tanggal_surat' => 'required',
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> 74c0199436b5c1fba05c2af5fa8fa2f292ab2547
             ]);
             //isi id_user dengan id user yang login
             $nama = Auth::user();
@@ -124,7 +128,11 @@ class suratkeluarControll extends Controller
                 'tujuan' => $request->tujuan,
                 'prihal' => $request->prihal,
                 'file' => $nama_file,
+<<<<<<< HEAD
                 'keterangan' => $request->keterangan
+=======
+                'keterangan' => $request->keterangan,
+>>>>>>> 74c0199436b5c1fba05c2af5fa8fa2f292ab2547
             ]);
             return redirect()->route("surat.index")->with(
             "success",

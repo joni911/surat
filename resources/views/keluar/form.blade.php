@@ -17,6 +17,16 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+  <div class="form-group">
+    <label for="">No Surat</label>
+    <div class="col-sm-10">
+        <input type="text"
+      class="form-control" name="nomor_asli_surat" id="" aria-describedby="helpId" placeholder="">
+    </div>
+  </div>
+>>>>>>> 74c0199436b5c1fba05c2af5fa8fa2f292ab2547
   <div class="form-group">
     <label for="">Prihal</label>
     <div class="col-sm-10">
@@ -32,6 +42,10 @@
       class="form-control" name="tanggal_surat" id="" aria-describedby="helpId" placeholder="">
     </div>
   </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74c0199436b5c1fba05c2af5fa8fa2f292ab2547
 <div class="form-group">
     <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
     <div class="col-sm-10">

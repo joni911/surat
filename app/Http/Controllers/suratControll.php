@@ -216,13 +216,14 @@ class suratControll extends Controller
                 $data->prihal = $request->prihal;
                 $data->keterangan = $request->keterangan;
                 $data->tanggal_surat = $request->tanggal_masuk;
-
+                $data->tujuan= $request->tujuan;
                 $data->save();
             }else{
                 $nama_file = $request->no_surat."-".$request->tanggal_masuk.".".$file->extension();
                 $tujuan_upload = 'surat_storage';
                 $file->move($tujuan_upload,$nama_file);
                 $data->prihal = $request->prihal;
+                $data->tujuan= $request->tujuan;
                 $data->keterangan = $request->keterangan;
                 $data->tanggal_surat = $request->tanggal_masuk;
 
