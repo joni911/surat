@@ -13,7 +13,6 @@ class keluar extends Model
     protected $fillable = [
         'user_id', 'no_surat','prihal',
         'tujuan','keterangan','file','tanggal_surat',
-        'asal_surat','tanggal_terima_surat','no_asal_surat'
     ];
     public function user()
     {

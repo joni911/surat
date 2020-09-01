@@ -102,12 +102,15 @@ class masukControll extends Controller
             $tanggal =$mytime->toDateString();
             echo $data->no_surat;
             $file = $request->file('file_disposisi');
-            $user = Auth::user();
-            $nama_file = 'Disposisi-'.$user->name.'-'
-            .$tanggal.'.'.$file->extension();
-
-            $tujuan_upload = 'disposisi_storage';
-            $file->move($tujuan_upload,$nama_file);
+                if ($file !=null) {
+                    $user = Auth::user();
+                    $nama_file = 'Disposisi-'.$user->name.'-'
+                    .$tanggal.'.'.$file->extension();
+                    $tujuan_upload = 'disposisi_storage';
+                    $file->move($tujuan_upload,$nama_file);
+                }else{
+                    $nama_file = '404';
+                }
 
             disposisi::create([
                 'surat_id' => $data->id,

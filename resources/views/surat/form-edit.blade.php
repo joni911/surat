@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-5">
-            @include('surat.switche_edit')
+            @include('surat.tujuan')
         </div>
         <div class="col-sm-5">
             <div class="form-group">

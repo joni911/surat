@@ -85,7 +85,7 @@ class SuratCodeControll extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'kode_surat' => 'required|max:3|unique:suratcodes',
+            'kode_surat' => 'required|max:4|unique:suratcodes',
             'keterangan' => 'required|max:32',
             ]);
             $data = suratcode::findOrFail($id);

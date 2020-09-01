@@ -90,8 +90,6 @@
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
         <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">
-        <a name="" id="" class="btn btn-primary" href="{{route('advance.index')}}" role="button">Tambah Disposisi</a>
-
     </div>
 </div>
 

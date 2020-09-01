@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-5">
-            @include('keluar.tujuan')
+            @include('surat.tujuan')
         </div>
         <div class="col-sm-5">
             <div class="form-group">
@@ -17,6 +17,20 @@
     </div>
 </div>
 
+<div class="form-group">
+    <label for="">Asal Surat</label>
+    <div class="col-sm-10">
+        <input type="text"
+      class="form-control" name="asal_surat" id="" aria-describedby="helpId" placeholder="">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="">No Surat</label>
+    <div class="col-sm-10">
+        <input type="text"
+      class="form-control" name="nomor_asli_surat" id="" aria-describedby="helpId" placeholder="">
+    </div>
+  </div>
   <div class="form-group">
     <label for="">Prihal</label>
     <div class="col-sm-10">
@@ -30,6 +44,13 @@
     <div class="col-sm-10">
       <input type="date"
       class="form-control" name="tanggal_surat" id="" aria-describedby="helpId" placeholder="">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="">Tanggal Terima Surat</label>
+    <div class="col-sm-10">
+      <input type="date"
+      class="form-control" name="tanggal_terima_surat" id="" aria-describedby="helpId" placeholder="">
     </div>
   </div>
 <div class="form-group">

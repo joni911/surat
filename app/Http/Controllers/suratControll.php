@@ -131,7 +131,7 @@ class suratControll extends Controller
 
             $file = $request->file('file');
 
-            $nama_file = $request->no_surat."-".$request->prihal.".".$file->extension();
+            $nama_file = $request->no_surat."-".$request->tanggal_terima_surat.".".$file->extension();
 
             $tujuan_upload = 'surat_storage';
             $file->move($tujuan_upload,$nama_file);
@@ -184,9 +184,15 @@ class suratControll extends Controller
         $data = surat::findOrFail($id);
         $user = Auth::user();
         //echo $data->name." Jabatan : ".$data->jabatan->jabatan;
+        $kode = suratcode::get();
+        $tampil = [];
+        $tampil['data'] = $kode;
+        $id = $user->jabatan->jabatan;
+        $t = tujuan::where('nama_tujuan',$id)->first();
+        echo $t;
+        $tujuan['data'] = tujuan_detail::where('tujuan_id',$t->id)->get();
 
-
-       return view('surat.edit',$data,['user' => $user]);
+       return view('surat.edit',$data,['user' => $user,'kode' =>$tampil['data'],'tujuan' =>$tujuan['data']]);
     }
 
     /**
@@ -213,7 +219,7 @@ class suratControll extends Controller
 
                 $data->save();
             }else{
-                $nama_file = $request->no_surat."-".$request->prihal.".".$file->extension();
+                $nama_file = $request->no_surat."-".$request->tanggal_masuk.".".$file->extension();
                 $tujuan_upload = 'surat_storage';
                 $file->move($tujuan_upload,$nama_file);
                 $data->prihal = $request->prihal;

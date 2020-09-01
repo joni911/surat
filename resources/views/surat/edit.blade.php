@@ -21,10 +21,11 @@
             <div class="card-header">
                 Ubah Petugas
             </div>
+        <p>{{$user->jabatan->jabatan}}</p>
             <div class="card-body">
                 <form class="form-horizontal" action="{{ route('surat.update', ['surat' => $id]) }}" enctype="multipart/form-data" method="post">
                     @method('PUT')
-                    @include('surat.form-edit')
+                    @include('surat.form-mod')
                 </form>
             </div>
         </div>
