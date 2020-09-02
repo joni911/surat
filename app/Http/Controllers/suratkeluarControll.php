@@ -56,6 +56,7 @@ class suratkeluarControll extends Controller
             'tanggal_surat' => 'required'
             ]);
             //isi id_user dengan id user yang login
+
             $nama = Auth::user();
 
             // auto generate number

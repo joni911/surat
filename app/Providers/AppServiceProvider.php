@@ -105,11 +105,6 @@ class AppServiceProvider extends ServiceProvider {
                         $event->menu->add(
                             ['header' => 'MENU SURAT'],
                             [
-                            'text' => 'Surat',
-                            'url' => 'surat',
-                            'icon' => 'fas fa-fw fa-file'
-                            ],
-                            [
                                 'text' => 'Kotak Masuk',
                                 'url' => 'inbox',
                                 'icon' => 'fas fa-fw fa-inbox'
