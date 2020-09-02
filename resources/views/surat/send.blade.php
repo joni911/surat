@@ -39,6 +39,6 @@
             <i class="fab fa-whatsapp    "></i>
             Kirim Wa
         </a>
-        <a href="{{ route('surat.index') }}" class="btn btn-primary" role="button">Batal</a>
+        <a href="{{ route('surat.index') }}" class="btn btn-primary" role="button">Kembali ke menu Surat</a>
     </div>
 </div>
