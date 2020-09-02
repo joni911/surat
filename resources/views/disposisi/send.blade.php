@@ -47,7 +47,7 @@
             <i class="fab fa-whatsapp    "></i>
                 Kirim Wa
             </a>
-        <a href="{{ route('inbox.index') }}" class="btn btn-primary" role="button">Selesai</a>
+        <a href="{{ route('inbox.index') }}" class="btn btn-primary" role="button">Kembali ke Kotak Masuk</a>
     </div>
 </div>
 
