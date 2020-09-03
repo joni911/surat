@@ -66,6 +66,9 @@
       <input type="text"
         class="form-control" name="user" value="{{$tampil->name}}" hidden id="" aria-describedby="helpId" placeholder="">
     </div>
+    <div class="alert alert-info" role="alert">
+        untuk kajian dan disposisi jika mengetik panjang dan berisi enter mohon di tambahkan spasi sebelum enter agar surat tidak mepet ketika di kirim via wa
+    </div>
     @include('inbox.tujuan')
     <div class="form-group">
         <label for="">Disposisi</label>
