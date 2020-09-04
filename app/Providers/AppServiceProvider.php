@@ -50,6 +50,11 @@ class AppServiceProvider extends ServiceProvider {
                                 'url' => 'disposisi',
                                 'icon' => 'fas fa-fw fa-paper-plane'
                             ],
+                            [
+                                'text' => 'History Disposisi',
+                                'url' => 'history',
+                                'icon' => 'fas fa-fw fa-history'
+                            ],
                             ['header' => 'MENU USER'],
                             [
                             'text' => 'Profile',

@@ -43,9 +43,10 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::resource('advance', 'advancedisposisiControll');
     Route::resource('jabatan', 'jabatanControll');
     Route::resource('disposisi', 'disposisiControll');
+    Route::resource('history', 'HistoryDisposisiControll');
     Route::resource('tujuan', 'tujuanController');
     Route::resource('tujuan_detail', 'tujuan_detailsController');
-    Route::get('/history', 'PembayaranController@history');
+
     Route::get('/laporan', function () {
     return view('laporan');
     });
