@@ -56,7 +56,7 @@
 <div class="form-group">
     <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
     <div class="col-sm-10">
-        <textarea name="keterangan" class="form-control" id="" cols="30" rows="10">YTH. Bapak/Ibu Kabag ....  disampaikan surat dari ...</textarea>
+        <textarea name="keterangan" class="form-control" id="" cols="30" rows="10">YTH.BAPAK / IBU KABAG  ....  DISAMPAIKAN SURAT DARI ...</textarea>
     </div>
 </div>
 </div>
