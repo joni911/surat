@@ -42,7 +42,9 @@
             </div>
         </div>
     </div>
+    @include('history.list')
 </div>
+
 <div class="container">
     <div class="form-group">
       <input type="text"

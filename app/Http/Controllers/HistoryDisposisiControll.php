@@ -69,10 +69,14 @@ class HistoryDisposisiControll extends Controller
         $data = disposisi::findorfail($id);
         $surat = surat::where('id',$data->surat_id)->first();
         $user = Auth::user();
+        $disposisi = disposisi::where('surat_id',$surat->id)->get();
         $t = tujuan::where('nama_tujuan',$user->jabatan->jabatan)->first();
         $tujuan = tujuan_detail::where('tujuan_id',$t->id)->get();
         // echo $surat;
-        return view('history.edit',$data,['surat' => $surat,'user' => $user,'list' => $tujuan]);
+        return view('history.edit',$data,
+        ['surat' => $surat,'user' => $user,'list' => $tujuan
+        ,'komentar' => $disposisi
+        ]);
     }
 
     /**
@@ -89,7 +93,9 @@ class HistoryDisposisiControll extends Controller
             'tujuan' => 'required',
             'kajian' => 'required'
             ]);
-            $data = surat::findOrFail($id);
+            $user = Auth::user();
+            $update = disposisi::findOrFail($id);
+            $data = surat::findOrFail($update->surat_id);
             $data->tujuan = $request->tujuan;
             //$data->hak_akses = $request->hak_akses;
             //jika password tidak kosong
@@ -109,18 +115,17 @@ class HistoryDisposisiControll extends Controller
                     $nama_file = '404';
                 }
                 $tujuan = $request->tujuan;
-            disposisi::create([
-                'surat_id' => $data->id,
-                'user' => $request->user,
-                'tujuan' => $tujuan,
-                'kajian' => $request->kajian,
-                'tanggal_kajian' => $tanggal,
-                'jam_kajian' => $jam,
-                'disposisi' => $request->disposisi,
-                'file_disposisi' => $nama_file
-            ]);
+            $update->tujuan = $tujuan;
+            $update->kajian =$request->kajian;
+            $update->user = $user->name;
+            $update->kajian = $request->kajian;
+            $update->tanggal_kajian = $tanggal;
+            $update->jam_kajian = $jam;
+            $update->disposisi = $request->disposisi;
+            $update->file_disposisi = $nama_file;
+            $update->save();
             if ($tujuan != "ARSIP") {
-                return redirect()->route("disposisi.edit",$id)->with(
+                return redirect()->route("disposisi.edit",$data->id)->with(
                     "success",
                     "Data berhasil dikirim ke ".$request->tujuan
                     );

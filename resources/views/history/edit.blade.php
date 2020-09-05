@@ -19,11 +19,11 @@
         @endif
         <div class="card">
             <div class="card-header">
-                Kirim Surat Anda
+                Ubah Disposisi Anda
             </div>
             <div class="card-body">
 
-                <form class="form-horizontal" action="{{ route('history.update', ['history' => $id]) }}" method="post">
+                <form class="form-horizontal" action="{{ route('history.update', ['history' => $id]) }}" method="post"  enctype="multipart/form-data">
                     @method('PUT')
                     @include('history.form')
                 </form>
