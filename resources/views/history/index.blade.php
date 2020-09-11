@@ -36,7 +36,7 @@
                                 <th>Prihal</th>
                                 <th>Disposisi</th>
                                 <th>Kajian</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -65,13 +65,13 @@
                                 </td>
 
                             <td>
-                                <div class="btn-group">
+                                {{-- <div class="btn-group">
                                     <a class="btn btn-success"
                                         href="{{ route('history.edit', ['history'=>$item->id]) }}">
                                         <i class="fas fa-edit"></i>
 
                                     </a>
-                                </div>
+                                </div> --}}
                             </td>
                         </tr>
                         <?php $no++;?>

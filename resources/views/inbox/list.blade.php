@@ -6,7 +6,7 @@
                     <th style="width: 20px">No</th>
                     <th>No Surat</th>
                     <th>Tanggal</th>
-                    <th>Pembuat Kajian</th>
+                    <th>Yang Mendisposisi</th>
                     <th>Tujuan</th>
                     <th>Disposisi</th>
                     <th>File Disposisi</th>

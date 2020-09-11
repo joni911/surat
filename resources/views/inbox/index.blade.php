@@ -38,7 +38,7 @@
                             <td>
                                 {{ $item->no_surat }}
                             <td>
-                                {{$item->prihal}}
+                                {{$item->asal_surat}}
                             </td>
                             <td>
                                 {{ $item->prihal }}

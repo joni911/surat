@@ -20,7 +20,9 @@ class HistoryDisposisiControll extends Controller
     public function index()
     {
         $user = Auth::user();
-        $data = disposisi::where('user',$user->name)->paginate(10);
+        $data = disposisi::where('user',$user->name)
+        ->orderBy('id','desc')
+        ->paginate(10);
         $tampil = [];
         $tampil['data'] = $data;
         return view('history.index',$tampil);

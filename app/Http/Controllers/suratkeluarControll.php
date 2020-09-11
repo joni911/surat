@@ -112,7 +112,7 @@ class suratkeluarControll extends Controller
 
             $file = $request->file('file');
 
-            $nama_file = $request->no_surat."-".$request->prihal.".".$file->extension();
+            $nama_file = $request->no_surat."-".$new_serial.".".$file->extension();
 
             $tujuan_upload = 'surat_keluar_storage';
             $file->move($tujuan_upload,$nama_file);
@@ -180,6 +180,7 @@ class suratkeluarControll extends Controller
             'tanggal_surat' => 'required'
             ]);
             $data = keluar::findOrFail($id);
+            $nama_file = $data->file;
             //jika password tidak kosong
             $file = $request->file('file');
             if ($file == null) {
@@ -189,13 +190,13 @@ class suratkeluarControll extends Controller
                 $data->tujuan= $request->tujuan;
                 $data->save();
             }else{
-                $nama_file = $request->no_surat."-".$request->tanggal_masuk.".".$file->extension();
-                $tujuan_upload = 'surat_storage';
+
+                $tujuan_upload = 'surat_keluar_storage';
                 $file->move($tujuan_upload,$nama_file);
                 $data->prihal = $request->prihal;
                 $data->tujuan= $request->tujuan;
                 $data->keterangan = $request->keterangan;
-                $data->tanggal_surat = $request->tanggal_masuk;
+                $data->tanggal_surat = $request->tanggal_surat;
 
                 $data->file = $nama_file;
                 $data->save();

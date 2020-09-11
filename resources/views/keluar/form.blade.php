@@ -36,6 +36,7 @@
       class="form-control" value="{{$tanggal_surat ?? ''}}" name="tanggal_surat" id="" aria-describedby="helpId" placeholder="">
     </div>
   </div>
+  test
 <div class="form-group">
     <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
     <div class="col-sm-10">
