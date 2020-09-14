@@ -11,7 +11,9 @@
         <tr>
             <td>Tujuan</td>
             <td>:</td>
-            <td>{{$no_wa->no_wa}}</td>
+            <td>
+                {{$tujuan}}
+                {{$no_wa->no_wa}}</td>
 
         </tr>
         <tr>

@@ -77,12 +77,19 @@ class disposisiControll extends Controller
 
         $jabatan = jabatan::where('jabatan',$data->tujuan)->first();
 
-        $no_wa = User::findorFail($jabatan->user_id);
+        if ($jabatan == null) {
+            echo 'no kosong hubungi it';
+        } else {
+            $no_wa = User::findorFail($jabatan->user_id);
 
-        $kajian = disposisi::where('surat_id',$id)->orderBy('created_at','desc')
-        ->first();
+            $kajian = disposisi::where('surat_id',$id)->orderBy('created_at','desc')
+            ->first();
 
-         return view('disposisi.wa',$data,['user' => $user,'no_wa'=> $no_wa,'kajian'=>$kajian]);
+            return view('disposisi.wa',$data,['user' => $user,'no_wa'=> $no_wa,'kajian'=>$kajian]);
+        }
+
+
+
     }
 
     /**
