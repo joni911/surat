@@ -219,6 +219,7 @@ class suratControll extends Controller
             $file = $request->file('file');
             if ($file == null) {
                 $data->prihal = $request->prihal;
+                $data->asal_surat = $request->asal_surat;
                 $data->keterangan = $request->keterangan;
                 $data->tanggal_surat = $request->tanggal_surat;
                 $data->tujuan= $request->tujuan;
@@ -227,6 +228,7 @@ class suratControll extends Controller
                 $nama_file = $request->no_surat."-".$serial->serial."-".$request->tanggal_surat.".".$file->extension();
                 $tujuan_upload = 'surat_storage';
                 $file->move($tujuan_upload,$nama_file);
+                $data->asal_surat = $request->asal_surat;
                 $data->prihal = $request->prihal;
                 $data->tujuan= $request->tujuan;
                 $data->keterangan = $request->keterangan;
