@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <?php $no=1;?>
-                @forelse($disposisi ?? '' as $item)
+                @forelse($disposisi as $item)
                 <tr>
                     <td>
                         {{ $no }}

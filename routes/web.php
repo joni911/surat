@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\bagikansuratContrlller;
 use App\surat_id;
 use Illuminate\Support\Facades\Route;
 
@@ -46,7 +47,8 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::resource('history', 'HistoryDisposisiControll');
     Route::resource('tujuan', 'tujuanController');
     Route::resource('tujuan_detail', 'tujuan_detailsController');
-
+    Route::resource('bagikan', 'bagikansuratContrlller');
+    Route::get('/bagikan/{id}/tambah/{$user}', 'bagikansuratContrlller@tambah');
     Route::get('/laporan', function () {
     return view('laporan');
     });

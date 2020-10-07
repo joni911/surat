@@ -67,6 +67,9 @@
                                     <a name="" id="" class="btn btn-success" href="/disposisi/{{$item->surat_id}}/edit" role="button">
                                         <i class="fab fa-whatsapp"></i>
                                     </a>
+                                    <a class="btn btn-primary" href="/bagikan/{{$item->surat->id}}">
+                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                    </a>
                                 </td>
                             <td>
                                 {{-- <div class="btn-group">
