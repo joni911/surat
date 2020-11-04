@@ -35,7 +35,11 @@
                         {{$item->disposisi}}
                     </td>
                     <td>
-                        <a href="/disposisi_storage/{{$item->file_disposisi}}">Link</a>
+                        @if ($item->file_disposisi != '404')
+                            <a href="/disposisi_storage/{{$item->file_disposisi}}">Link</a>
+                        @else
+                            Tidak ada File Pendukung
+                        @endif
                     </td>
                     <td>
                         {{ $item->kajian }}
