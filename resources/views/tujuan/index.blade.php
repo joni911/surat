@@ -36,9 +36,7 @@
                                 {{ $item->nama_tujuan}}
                             </td>
                             <td>
-                                @foreach ($item->tujuan_detail as $detail)
-                                    {{$detail->jabatan_tujuan}},
-                                @endforeach
+                                
                             </td>
                             <td>
                                 <a class="btn btn-success"
