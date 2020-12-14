@@ -43,6 +43,7 @@
             %0AAsal Surat : {{$asal_surat}}%0APrihal  : {{$prihal}}
             %0AKajian : {{$kajian->kajian}}
             %0ADisposisi : {{$kajian->disposisi}}
+            %0ALink : https://bprsurat.synology.me/
             " target="balank_" role="button">
             <i class="fab fa-whatsapp    "></i>
                 Kirim Wa
