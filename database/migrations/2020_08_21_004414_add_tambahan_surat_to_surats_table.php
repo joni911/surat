@@ -15,9 +15,9 @@ class AddTambahanSuratToSuratsTable extends Migration
     {
         Schema::table('surats', function (Blueprint $table) {
             $table->string('tujuan');
-            $table->string('asal_surat');
-            $table->date('tanggal_terima_surat');
-            $table->string('no_asal_surat');
+            //$table->string('asal_surat');
+            // $table->date('tanggal_terima_surat');
+            // $table->string('no_asal_surat');
 
         });
     }
