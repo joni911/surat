@@ -7,23 +7,36 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <div class="container ">
-                    <div class="row ">
-                        <div class="col-sm-5">
+            <form action="/disposisi/temukan" method="get">
+                @csrf
+                <div class="card-header">
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <input type="text"
+                                      class="form-control" name="" id="" aria-describedby="helpId" placeholder="Cari ....">
+                                  </div>
+                            </div>
                             <div class="form-group">
-                                <input type="text"
-                                  class="form-control" name="" id="" aria-describedby="helpId" placeholder="Cari no surat">
-                              </div>
+
+                              <select class="form-control" name="tipe" id="">
+                                <option value="no_surat">No Surat</option>
+                                <option value="asal_surat">Asal Surat</option>
+                                <option value="prihal">Prihal</option>
+                                <option value="tujuan">Tujuan</option>
+                              </select>
+                            </div>
+                          <div class="row">
+                            <div class="col-sm-1-15">
+                                <button type="submit" class="btn btn-primary">Cari</button>
+                               </div>
+                          </div>
                         </div>
-                      <div class="row">
-                        <div class="col-sm-1-12">
-                            <button type="submit" class="btn btn-primary">Cari</button>
-                           </div>
-                      </div>
                     </div>
                 </div>
-            </div>
+            </form>
+
             <div class="card-body">
                 <table class="table table-bordered">
                     <table class="table table-bordered">

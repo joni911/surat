@@ -142,4 +142,26 @@ class disposisiControll extends Controller
     {
         //
     }
+
+    public function temukan(Request $request)
+    {
+        // $search = $request->nama;
+        // if ($search = null) {
+        //     $search = '';
+        // }
+        // $tipe = $request->tipe;
+        // if ($tipe = null) {
+        //     $tipe = 'prihal';
+        // }
+
+        // echo $tipe.' '.$search;
+        //     $hasil = surat::where($tipe,'LIKE','%'.$search.'%')
+        //     ->orderBy('created_at','desc')
+        //     ->paginate(10);
+        //     $hasil->appends($request->only($tipe));
+
+        // $tampil['data'] = $hasil;
+
+        // return view("absenuser.index", $tampil);
+    }
 }
