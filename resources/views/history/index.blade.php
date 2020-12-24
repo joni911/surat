@@ -64,6 +64,9 @@
                                     <a href="/disposisi_storage/{{$item->file_disposisi}}">{{$item->file_disposisi}}</a>
                                 </td>
                                 <td>
+                                    <a name="" id="" class="btn btn-warning" href="/inbox/{{$item->surat_id}}/edit" role="button">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
                                     <a name="" id="" class="btn btn-success" href="/disposisi/{{$item->surat_id}}/edit" role="button">
                                         <i class="fab fa-whatsapp"></i>
                                     </a>
