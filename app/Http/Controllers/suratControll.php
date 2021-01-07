@@ -86,8 +86,9 @@ class suratControll extends Controller
             $serial = surat_id::orderBy('created_at','desc')
             ->first()
             ;
+            //hope work
             // echo $serial->serial;
-            $year_check = 2020;
+            $year_check = 2021;
             echo $serial;
             if ($year!=$year_check) {
                 surat_id::create([

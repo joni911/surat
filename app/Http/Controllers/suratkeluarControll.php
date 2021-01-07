@@ -68,7 +68,7 @@ class suratkeluarControll extends Controller
             ->first()
             ;
             // echo $serial->serial;
-            $year_check = 2020;
+            $year_check = 2021;
             echo $serial;
             if ($year!=$year_check) {
                 surat_id::create([
