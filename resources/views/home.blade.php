@@ -25,7 +25,7 @@
                 </a>
             @endif
         @empty
-            There are no new notifications
+            Menu pencarian di disposisi telah aktif bagi user yang memiliki akses ke menu tersebut bisa melakukan pencarian
         @endforelse
 
 </div>
