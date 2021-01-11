@@ -15,7 +15,7 @@
                             <div class="col-sm-5">
                                 <div class="form-group">
                                     <input type="text"
-                                      class="form-control" name="" id="" aria-describedby="helpId" placeholder="Cari ....">
+                                      class="form-control" name="nama" id="" aria-describedby="helpId" placeholder="Cari ....">
                                   </div>
                             </div>
                             <div class="form-group">
@@ -25,10 +25,12 @@
                                 <option value="asal_surat">Asal Surat</option>
                                 <option value="prihal">Prihal</option>
                                 <option value="tujuan">Tujuan</option>
+                                <option value="tanggal_surat">Tanggal Surat</option>
+                                <option value="tanggal_terima_surat">Tanggal Terima Surat</option>
                               </select>
                             </div>
                           <div class="row">
-                            <div class="col-sm-1-15">
+                            <div class="col-sm-2-15">
                                 <button type="submit" class="btn btn-primary">Cari</button>
                                </div>
                           </div>
@@ -36,6 +38,18 @@
                     </div>
                 </div>
             </form>
+            {{-- <form action="/disposisi/temukan" method="get">
+                @csrf
+                <div class="form-group">
+                    <input type="text"
+                      class="form-control" name="nama" id="" aria-describedby="helpId" placeholder="Cari no surat 001">
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1-12">
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                       </div>
+                  </div>
+            </form> --}}
 
             <div class="card-body">
                 <table class="table table-bordered">

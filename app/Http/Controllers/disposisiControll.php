@@ -145,23 +145,16 @@ class disposisiControll extends Controller
 
     public function temukan(Request $request)
     {
-        // $search = $request->nama;
-        // if ($search = null) {
-        //     $search = '';
-        // }
-        // $tipe = $request->tipe;
-        // if ($tipe = null) {
-        //     $tipe = 'prihal';
-        // }
+        $search = $request->nama;
+        $tipe = $request->tipe;
 
-        // echo $tipe.' '.$search;
-        //     $hasil = surat::where($tipe,'LIKE','%'.$search.'%')
-        //     ->orderBy('created_at','desc')
-        //     ->paginate(10);
-        //     $hasil->appends($request->only($tipe));
+        $hasil = surat::where($tipe,'like','%'.$search.'%')
+        ->orderBy('created_at','desc')
+        ->paginate(10);
+        $hasil->appends($request->only('nama'));
 
-        // $tampil['data'] = $hasil;
+    $tampil['data'] = $hasil;
 
-        // return view("absenuser.index", $tampil);
+    return view("disposisi.index", $tampil);
     }
 }

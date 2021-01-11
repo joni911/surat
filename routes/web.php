@@ -34,6 +34,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/bagikan/{id}/tambah/{$user}', 'bagikansuratContrlller@tambah');
+    Route::get('/disposisi/temukan', 'disposisiControll@temukan');
     Route::resource('surat', 'suratControll');
     Route::resource('keluar', 'suratkeluarControll');
     Route::resource('suratcode', 'suratcodeControll');
@@ -48,8 +50,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::resource('tujuan', 'tujuanController');
     Route::resource('tujuan_detail', 'tujuan_detailsController');
     Route::resource('bagikan', 'bagikansuratContrlller');
-    Route::get('/bagikan/{id}/tambah/{$user}', 'bagikansuratContrlller@tambah');
-    Route::get('/disposisi/temukan', 'disposisiControll@temukan');
+
     // Route::get('/laporan', function () {
     // return view('laporan');
     // });

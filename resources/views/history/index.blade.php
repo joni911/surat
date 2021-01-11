@@ -11,16 +11,21 @@
                 <div class="container ">
                     <div class="row ">
                         <div class="col-sm-5">
-                            <div class="form-group">
-                                <input type="text"
-                                  class="form-control" name="" id="" aria-describedby="helpId" placeholder="Cari no surat">
-                              </div>
+                            {{-- <form action="/disposisi/temukan" method="get">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text"
+                                      class="form-control" name="nama" id="" aria-describedby="helpId" placeholder="Cari no surat 001">
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-sm-1-12">
+                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                       </div>
+                                  </div>
+                            </form> --}}
+
                         </div>
-                      <div class="row">
-                        <div class="col-sm-1-12">
-                            <button type="submit" class="btn btn-primary">Cari</button>
-                           </div>
-                      </div>
+
                     </div>
                 </div>
             </div>
