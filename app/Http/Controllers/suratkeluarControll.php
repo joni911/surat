@@ -112,7 +112,7 @@ class suratkeluarControll extends Controller
 
             $file = $request->file('file');
 
-            $nama_file = $request->no_surat."-".$new_serial.".".$file->extension();
+            $nama_file = $no_surat->kode_id.'-'.$no_surat->id.'-'.$no_surat->bulan.'-'.$no_surat->tahun."-".$new_serial.".".$file->extension();
 
             $tujuan_upload = 'surat_keluar_storage';
             $file->move($tujuan_upload,$nama_file);
