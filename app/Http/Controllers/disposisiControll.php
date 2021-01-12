@@ -142,7 +142,7 @@ class disposisiControll extends Controller
     {
         //
     }
-
+    // work 
     public function temukan(Request $request)
     {
         $search = $request->nama;
