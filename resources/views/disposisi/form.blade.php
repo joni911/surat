@@ -1,4 +1,4 @@
-{{ csrf_field() }}
+ {{ csrf_field() }}
 <div class="container">
     <div class="row">
         <div class="col">

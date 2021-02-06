@@ -101,7 +101,18 @@
                 {{ $data->links() }}
             </div>
             <div class="text-center">
-               <button type="button" class="btn btn-primary">Read</button>
+                @if ($bagikan_detail->status == 'belum dibuka')
+                <form class="form-horizontal" action="{{ route('bagikan_detail.update', ['bagikan_detail' => $bagikan_detail->id]) }}" method="post">
+                    @method('PUT')
+                    @csrf
+                    {{-- <input type="text" name="id" value="1"> --}}
+                    <input type="text" name="status" value="sudah dibaca" hidden>
+                    <button type="submit" class="btn btn-primary">Tandai Sudah di Baca</button>
+                </form>
+
+                @else
+
+                @endif
             </div>
         </div>
     </div>

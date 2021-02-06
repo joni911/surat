@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Surat')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Surat Sebaran</h1>
+<h1 class="m-0 text-dark">Manajemen Surat Sebaran belum Dibaca</h1>
 <div class="card-body">
     <table class="table table-bordered">
         <thead>
@@ -16,8 +16,10 @@
         </thead>
         <tbody>
             <?php $no=1;?>
+
             @forelse ($x->bagikan_detail as $z)
             <tr>
+                @if ($z->status == 'belum dibuka')
                 <td>{{$z->bagikan->surat->no_surat}}</td>
                 <td>{{$z->bagikan->surat->asal_surat}}</td>
                 <td>{{$z->bagikan->surat->prihal}}</td>
@@ -28,6 +30,10 @@
                     href="/disposisi/{{$z->bagikan->surat->id}}">
                     <i class="fas fa-paper-plane"></i>
                 </td>
+                @else
+
+                @endif
+
             </tr>
             <?php $no++;?>
             @empty
@@ -124,6 +130,51 @@
             </div>
         </div>
     </div>
+</div>
+<h1>Manajemen Surat Seberan Sudah Di Baca</h1>
+<div class="card-body">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 20px">No</th>
+                <th>No Surat</th>
+                <th>Asal Surat</th>
+                <th>Prihal</th>
+                <th>File</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $no=1;?>
+
+            @forelse ($x->bagikan_detail as $z)
+            <tr>
+                @if ($z->status == 'sudah dibaca')
+                <td>{{$z->bagikan->surat->no_surat}}</td>
+                <td>{{$z->bagikan->surat->asal_surat}}</td>
+                <td>{{$z->bagikan->surat->prihal}}</td>
+                <td>{{$z->bagikan->surat->keterangan}}</td>
+                <td><a href="/surat_storage/{{$z->bagikan->surat->file}}/">{{$z->bagikan->surat->file}}</a></td>
+                <td>
+                    <a class="btn btn-warning"
+                    href="/disposisi/{{$z->bagikan->surat->id}}">
+                    <i class="fas fa-paper-plane"></i>
+                </td>
+                @else
+
+                @endif
+
+            </tr>
+            <?php $no++;?>
+            @empty
+            <tr>
+                <td colspan="4">
+                    Tidak ada data.
+                </td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
 </div>
 @stop
 @section('plugins.Sweetalert2', true)

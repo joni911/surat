@@ -50,7 +50,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::resource('tujuan', 'tujuanController');
     Route::resource('tujuan_detail', 'tujuan_detailsController');
     Route::resource('bagikan', 'bagikansuratContrlller');
-
+    Route::resource('bagikan_detail', 'bagikan_detailControll');
     // Route::get('/laporan', function () {
     // return view('laporan');
     // });

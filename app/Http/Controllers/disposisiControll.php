@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\bagikan;
+use App\bagikan_detail;
 use App\disposisi;
 use App\jabatan;
 use App\surat;
@@ -57,7 +59,13 @@ class disposisiControll extends Controller
         $data = disposisi::where('surat_id',$id)->paginate(10);
         $tampil['data'] = $data;
         $surat = surat::findorfail($id);
-        return view('disposisi.list',$tampil,['surat' => $surat]);
+        $u = Auth::user();
+        $bagikan = bagikan::where('surat_id',$id)->first();
+        $bagikan_detail = bagikan_detail::where('bagikan_id',$bagikan->id)
+        ->where('user_id',$u->id)
+        ->first();
+        // echo $bagikan_detail;
+        return view('disposisi.list',$tampil,['surat' => $surat,'bagikan_detail' => $bagikan_detail]);
 
     }
 
