@@ -35,7 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/bagikan/{id}/tambah/{$user}', 'bagikansuratContrlller@tambah');
-    Route::get('/disposisi/temukan', 'disposisiControll@temukan');
+    Route::get('/cari/temukan', 'cariControll@temukan');
     Route::resource('surat', 'suratControll');
     Route::resource('keluar', 'suratkeluarControll');
     Route::resource('suratcode', 'suratcodeControll');

@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <form action="/disposisi/temukan" method="get">
+            <form action="/cari/temukan" method="get">
                 @csrf
                 <div class="card-header">
                     <div class="container ">

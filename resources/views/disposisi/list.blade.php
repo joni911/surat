@@ -100,6 +100,9 @@
             <div class="card-footer clearfix text-right">
                 {{ $data->links() }}
             </div>
+            <div class="text-center">
+               <button type="button" class="btn btn-primary">Read</button>
+            </div>
         </div>
     </div>
 </div>

@@ -48,9 +48,14 @@
                                         href="{{ route('user.edit', ['user'=>$item->id]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
+                                    <a class="btn btn-warning"
+                                        href="/profile/{{$item->id}}">
+                                        <i class="fas fa-user-alt"></i>
+                                    </a>
                                     <a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
                                         <i class="fas fa-trash"></i>
                                     </a>
+
                                 </div>
                             </td>
                         </tr>

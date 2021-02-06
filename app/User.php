@@ -18,9 +18,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'hak_akses','password','no_wa'
     ];
-    public function bagikan_details()
+    public function bagikan_detail()
     {
-        return $this->hasMany('App\bagikan_details');
+        return $this->hasMany('App\bagikan_detail');
     }
     public function jabatan()
     {

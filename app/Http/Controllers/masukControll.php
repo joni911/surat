@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\bagikan_detail;
 use App\disposisi;
 use App\surat;
 use App\tujuan;
@@ -21,8 +22,9 @@ class masukControll extends Controller
     {
         $data = Auth::user();
         //echo $data->jabatan->jabatan;
-        $tampil['data'] = surat::where('tujuan',$data->jabatan->jabatan)->paginate(10);
-        return view('inbox.index',$tampil);
+       $tampil['data'] = surat::where('tujuan',$data->jabatan->jabatan)->paginate(10);
+
+        return view('inbox.index',$tampil,['x' => $data]);
     }
 
     /**

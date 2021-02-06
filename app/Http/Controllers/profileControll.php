@@ -51,7 +51,13 @@ class profileControll extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth::user();
+        if ($user->hak_akses == "administrator"){
+            $tampil = User::findOrFail($id);
+            return view('profile.create',$tampil);
+        }else {
+            echo "Tidak memiliki hak akses";
+        }
     }
 
     /**
