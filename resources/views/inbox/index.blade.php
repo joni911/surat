@@ -131,7 +131,7 @@
         </div>
     </div>
 </div>
-<h1>Manajemen Surat Seberan Sudah Di Baca</h1>
+<h1>Manajemen Surat Sebaran Sudah Di Baca</h1>
 <div class="card-body">
     <table class="table table-bordered">
         <thead>

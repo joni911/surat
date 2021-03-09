@@ -53,7 +53,7 @@
                                 </td>
 
                                 <td>
-                                    {{ $item->surat->no_surat }}
+                                    {{$item->surat->no_surat}}
                                 </td>
                                 <td>
                                     {{$item->surat->asal_surat}}
