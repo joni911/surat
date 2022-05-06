@@ -23,6 +23,8 @@ class suratkeluarControll extends Controller
     public function index()
     {
         //
+        $keluar = keluar::OrderBy('created_at','desc')->paginate(10);
+        return view('surat.keluar.index',['keluar'=>$keluar]);
     }
 
     /**

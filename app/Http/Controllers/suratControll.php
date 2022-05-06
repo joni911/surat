@@ -26,13 +26,25 @@ class suratControll extends Controller
     {
         $data = Auth::user();
         //echo $data->jabatan->jabatan;
-       $tampil['data'] = surat::where('user_id',$data->id)
-       ->OrderBy('created_at','desc')
-       ->paginate(10);
-        $keluar['data'] = keluar::where('user_id',$data->id)
-        ->OrderBy('created_at','desc')
-       ->paginate(10);
-        return view('surat.index',['data'=>$tampil['data'], 'keluar' =>$keluar['data']]);
+        if ($data->hak_akses == 'administrator') {
+            # code...
+            $tampil['data'] = surat::OrderBy('created_at','desc')
+            ->paginate(10);
+            $keluar['data'] = keluar::OrderBy('created_at','desc')
+            ->paginate(10);
+                return view('surat.index',['data'=>$tampil['data'], 'keluar' =>$keluar['data']]);
+        } else {
+            # code...
+            $tampil['data'] = surat::where('user_id',$data->id)
+            ->OrderBy('created_at','desc')
+            ->paginate(10);
+                $keluar['data'] = keluar::where('user_id',$data->id)
+                ->OrderBy('created_at','desc')
+            ->paginate(10);
+                return view('surat.index',['data'=>$tampil['data'], 'keluar' =>$keluar['data']]);
+        }
+
+
     }
 
     /**

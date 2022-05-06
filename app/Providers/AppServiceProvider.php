@@ -51,6 +51,11 @@ class AppServiceProvider extends ServiceProvider {
                                 'icon' => 'fas fa-fw fa-paper-plane'
                             ],
                             [
+                                'text' => 'Surat Keluar',
+                                'url' => 'keluar',
+                                'icon' => 'fas fa-fw fa-paper-plane'
+                            ],
+                            [
                                 'text' => 'History Disposisi',
                                 'url' => 'history',
                                 'icon' => 'fas fa-fw fa-history'
